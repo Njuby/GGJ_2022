@@ -50,5 +50,8 @@ MonoBehaviour:
   radius: 10
   spawnLimit: 10
   time: 0
-  spawnTime: 10
+  spawnTime: 1
   spawnedEnemies: []
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 1

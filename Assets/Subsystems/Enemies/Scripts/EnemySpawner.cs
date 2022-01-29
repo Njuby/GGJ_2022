@@ -17,6 +17,8 @@ public class EnemySpawner : MonoBehaviour
 
     public List<GameObject> spawnedEnemies = new List<GameObject>();
 
+    public LayerMask groundMask;
+
     public void Update()
     {
         if (spawnedEnemies.Count >= spawnLimit) return;
@@ -40,10 +42,15 @@ public class EnemySpawner : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(0, Random.Range(0f, 360f), 0);
         float distance = Random.Range(0, radius);
 
-        GameObject obj = PoolManager.Instance.GetFromPool(enemy[enemyType], transform.position, rotation, null);
-        obj.transform.position += obj.transform.forward * distance;
-
-        spawnedEnemies.Add(obj);
+        transform.rotation = rotation;
+        Vector3 pos = (transform.position + transform.forward * distance) + Vector3.up;
+        if (RaycastTools.RayCastFromPos(pos, Vector3.down, groundMask, out RaycastHit hit))
+        {
+            Debug.Log(hit.point);
+            GameObject obj = PoolManager.Instance.GetFromPool(enemy[enemyType], hit.point, rotation, null);
+            // obj.transform.position += transform.forward * distance;
+            spawnedEnemies.Add(obj);
+        }
     }
 
     public void DespawnEnemy(GameObject enemy)
