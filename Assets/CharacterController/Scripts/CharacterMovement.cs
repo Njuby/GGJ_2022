@@ -26,6 +26,8 @@ public class CharacterMovement : MonoBehaviour
     private float slopeAmount;
     private Vector3 floorNormal;
 
+    public float InputAmount { get => inputAmount; set => inputAmount = value; }
+
     // Use this for initialization
     private void Start()
     {
@@ -70,8 +72,10 @@ public class CharacterMovement : MonoBehaviour
         // handle animation blendtree for walking
         if (anim != null)
         {
-            anim.SetFloat("Velocity", inputAmount, 0.2f, Time.deltaTime);
-            anim.SetFloat("SlopeNormal", slopeAmount, 0.2f, Time.deltaTime);
+            anim.SetFloat("Vertical", vertical * inputAmount, 0.2f, Time.deltaTime);
+            //anim.SetFloat("Z", horizontal, 0.2f, Time.deltaTime);
+            //anim.SetFloat("SlopeNormal", slopeAmount, 0.2f, Time.deltaTime);
+            anim.SetBool("isJumping", !IsGrounded());
         }
     }
 
@@ -168,7 +172,7 @@ public class CharacterMovement : MonoBehaviour
         {
             gravity.y = jumpPower;
             if (anim != null)
-                anim.SetTrigger("Jumping");
+                anim.SetBool("isJumping", true);
         }
     }
 }

@@ -16,6 +16,6 @@ MonoBehaviour:
   jump: 32
   dash: 113
   crouch: 306
-  spell1: 323
-  spell2: 324
+  aim: 324
+  shoot: 323
   toggleMouse: 0

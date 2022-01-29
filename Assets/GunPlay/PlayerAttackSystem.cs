@@ -11,8 +11,11 @@ public class PlayerAttackSystem : MonoBehaviour
     [TitleGroup("Aim")]
     [SerializeField, Required, BoxGroup("Aim/", false)] private Camera mainCam;
     [SerializeField, Required, BoxGroup("Aim/", false)] private Transform model;
+    [SerializeField, Required, BoxGroup("Aim/", false)] private Transform aimIcon;
     [SerializeField, Required, BoxGroup("Aim/", false)] private AimSystem playerAim;
-    [SerializeField, Required, BoxGroup("Aim/", false)] private Animator aimAnimator;
+    [SerializeField, Required, BoxGroup("Aim/", false)] private Animator playerAnim;
+    [SerializeField, Required, BoxGroup("Aim/", false)] private GameObject ammoSpawn;
+    [SerializeField, Required, BoxGroup("Aim/", false)] private Ammo playerAmmo;
 
     [TitleGroup("Debug")]
     [SerializeField, BoxGroup("Debug/", false)] private LayerMask ignoreLayer;
@@ -20,7 +23,7 @@ public class PlayerAttackSystem : MonoBehaviour
     [SerializeField, BoxGroup("Debug/", false)] private bool isAttacking;
     [SerializeField, BoxGroup("Debug/", false)] private float maxTravelDistanceTest;
     [SerializeField, BoxGroup("Debug/", false)] private Transform currentTarget;
-
+    private bool isAiming;
     private WaitForSeconds targetDetectionDelay;
 
     public bool IsAttacking => isAttacking;
@@ -30,12 +33,44 @@ public class PlayerAttackSystem : MonoBehaviour
         playerAim = aimSystem;
     }
 
+    public void UpdateAttack()
+    {
+        if (Input.GetKeyDown(playerInputSettings.Aim))
+        {
+            isAiming = !isAiming;
+            Aim();
+        }
+
+        if (Input.GetKeyDown(playerInputSettings.Shoot))
+        {
+            Attack();
+            playerAnim.SetBool("isShooting", true);
+        }
+
+        if (Input.GetKeyUp(playerInputSettings.Shoot))
+        {
+            playerAnim.SetBool("isShooting", false);
+        }
+
+        aimIcon.gameObject.SetActive(isAiming);
+        playerAnim.SetBool("isAiming", isAiming);
+    }
+
+    public void Aim()
+    {
+    }
+
     public void Attack()
     {
         ignoreLayer = ~(1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer("Particles"));
         currentTarget = playerAim.AutoAim();
         isAttacking = false;
-        aimAnimator.SetBool("TargetLocked", currentTarget);
+
+        GameObject bullet = PoolManager.Instance.GetFromPool(playerAmmo.Prefab, ammoSpawn.transform.position, Quaternion.Euler(90, 0, 0), null);
+        AmmoMove ammoMove = bullet.GetComponent<AmmoMove>();
+
+        ammoMove.Setup(currentTarget ? currentTarget.transform.position : transform.position + (10 * -transform.forward), playerAmmo.Speed);
+        //aimAnimator.SetBool("TargetLocked", currentTarget);
         //for (int i = 0; i < attackSpells.Length; i++)
         //{
         //    AttackAbility ability = attackSpells[i];

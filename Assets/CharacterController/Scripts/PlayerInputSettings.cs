@@ -20,8 +20,10 @@ public class PlayerInputSettings : ScriptableObject
     [SerializeField, BoxGroup("Maneuver/Maneuver")] private KeyCode crouch;
 
     [TitleGroup("Attack")]
-    [SerializeField, BoxGroup("Attack/Attack")] private KeyCode spell1;
-    [SerializeField, BoxGroup("Attack/Attack")] private KeyCode spell2;
+    //[SerializeField, BoxGroup("Attack/Attack")] private KeyCode spell1;
+    //[SerializeField, BoxGroup("Attack/Attack")] private KeyCode spell2;
+    [SerializeField, BoxGroup("Attack/Attack")] private KeyCode aim;
+    [SerializeField, BoxGroup("Attack/Attack")] private KeyCode shoot;
 
     [TitleGroup("UI")]
     [SerializeField, BoxGroup("UI/UI")] private KeyCode toggleMouse;
@@ -36,17 +38,19 @@ public class PlayerInputSettings : ScriptableObject
     public KeyCode Crouch { get => crouch; set => crouch = value; }
     public KeyCode Run { get => run; set => run = value; }
 
-    public KeyCode Spell1
-    {
-        get => spell1;
-        set => spell1 = value;
-    }
+    //public KeyCode Spell1
+    //{
+    //    get => spell1;
+    //    set => spell1 = value;
+    //}
 
-    public KeyCode Spell2
-    {
-        get => spell2;
-        set => spell2 = value;
-    }
+    //public KeyCode Spell2
+    //{
+    //    get => spell2;
+    //    set => spell2 = value;
+    //}
 
     public KeyCode ToggleMouse { get => toggleMouse; set => toggleMouse = value; }
+    public KeyCode Aim { get => aim; set => aim = value; }
+    public KeyCode Shoot { get => shoot; set => shoot = value; }
 }
