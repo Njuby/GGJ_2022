@@ -10,8 +10,8 @@ public class CharacterMovement : MonoBehaviour
     public float slopeInfluence = 5f;
     public float jumpPower = 10f;
 
-    private Rigidbody rb;
-    private Animator anim;
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private Animator anim;
     private float vertical;
     private float horizontal;
     private Vector3 moveDirection;
@@ -25,15 +25,13 @@ public class CharacterMovement : MonoBehaviour
     private bool jump_input_down;
     private float slopeAmount;
     private Vector3 floorNormal;
+    private float turnSmoothVelocity;
+
+    public float InputAmount { get => inputAmount; set => inputAmount = value; }
 
     // Use this for initialization
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-        anim = GetComponentInChildren<Animator>();
-    }
 
-    public void MoveInput()
+    public void MoveInput(Camera cam)
     {
         // reset movement
         moveDirection = Vector3.zero;
@@ -44,8 +42,8 @@ public class CharacterMovement : MonoBehaviour
         jump_input_down = Input.GetKeyDown(KeyCode.Space);
 
         // base movement on camera
-        Vector3 correctedVertical = vertical * transform.forward;/*Camera.main.transform.forward;*/
-        Vector3 correctedHorizontal = horizontal * transform.right; /** Camera.main.transform.right;*/
+        Vector3 correctedVertical = vertical * Vector3.forward; //* transform.forward;/*Camera.main.transform.forward;*/
+        Vector3 correctedHorizontal = horizontal * Vector3.right;// * transform.right; /** Camera.main.transform.right;*/
 
         Vector3 combinedInput = correctedHorizontal + correctedVertical;
         // normalize so diagonal movement isnt twice as fast, clear the Y so your character doesnt try to
@@ -58,9 +56,14 @@ public class CharacterMovement : MonoBehaviour
         inputAmount = Mathf.Clamp01(inputMagnitude);
 
         // rotate player to movement direction
-        Quaternion rot = Quaternion.LookRotation(moveDirection);
-        Quaternion targetRotation = Quaternion.Slerp(transform.rotation, rot, Time.fixedDeltaTime * inputAmount * rotateSpeed);
-        transform.rotation = targetRotation;
+        //Quaternion rot = Quaternion.LookRotation(moveDirection);
+        //Quaternion targetRotation = Quaternion.Slerp(transform.rotation, rot, Time.fixedDeltaTime * inputAmount * rotateSpeed);
+        //transform.rotation = targetRotation;
+
+        float targetRot = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg +
+                               cam.transform.eulerAngles.y;
+        rb.transform.eulerAngles = Vector3.up *
+            Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRot, ref turnSmoothVelocity, 0.1f);
 
         if (jump_input_down)
         {
@@ -70,8 +73,11 @@ public class CharacterMovement : MonoBehaviour
         // handle animation blendtree for walking
         if (anim != null)
         {
-            anim.SetFloat("Velocity", inputAmount, 0.2f, Time.deltaTime);
-            anim.SetFloat("SlopeNormal", slopeAmount, 0.2f, Time.deltaTime);
+            anim.SetFloat("Vertical", vertical, 0.2f, Time.deltaTime);
+            anim.SetFloat("Horizontal", horizontal, 0.2f, Time.deltaTime);
+            //anim.SetFloat("Z", horizontal, 0.2f, Time.deltaTime);
+            //anim.SetFloat("SlopeNormal", slopeAmount, 0.2f, Time.deltaTime);
+            anim.SetBool("isJumping", !IsGrounded());
         }
     }
 
@@ -84,7 +90,7 @@ public class CharacterMovement : MonoBehaviour
         }
 
         // actual movement of the rigidbody + extra down force
-        rb.velocity = (moveDirection * GetMoveSpeed(moveSpeed) * inputAmount) + gravity;
+        rb.velocity = (rb.transform.forward * moveDirection.magnitude * GetMoveSpeed(moveSpeed) * inputAmount) + gravity;
 
         // find the Y position via raycasts
         floorMovement = new Vector3(rb.position.x, FindFloor().y + floorOffsetY, rb.position.z);
@@ -122,7 +128,7 @@ public class CharacterMovement : MonoBehaviour
         else { return 0; }
     }
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         if (FloorRaycasts(0, 0, 0.6f) != Vector3.zero)
         {
@@ -162,13 +168,13 @@ public class CharacterMovement : MonoBehaviour
         return currentMovespeed;
     }
 
-    private void Jump()
+    public void Jump()
     {
         if (IsGrounded())
         {
             gravity.y = jumpPower;
             if (anim != null)
-                anim.SetTrigger("Jumping");
+                anim.SetBool("isJumping", true);
         }
     }
 }
