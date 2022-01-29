@@ -24,7 +24,7 @@ public class StompAbility : Ability
 
     public void OnEnable()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterMovement>();
+        player = GetComponentInChildren<CharacterMovement>();
 
         preview.transform.localScale = Vector3.one * damageRadius;
         effect.transform.localScale = Vector3.one * damageRadius;
