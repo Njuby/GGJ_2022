@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: e4cdb0c07783a14478cb4e23a652c2e5
+guid: a4021d555ca435540a8a1e59022feba4
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Ellen_PistolIdle
+    second: Ellen_PistolWalk
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Ellen_PistolIdle
+      name: Ellen_PistolWalk
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 249
+      lastFrame: 24
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

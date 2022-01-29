@@ -43,8 +43,10 @@ public class PlayerAttackSystem : MonoBehaviour
 
         if (Input.GetKeyDown(playerInputSettings.Shoot))
         {
-            Attack();
-            playerAnim.SetBool("isShooting", true);
+            if (isAiming)
+            {
+                playerAnim.SetBool("isShooting", true);
+            }
         }
 
         if (Input.GetKeyUp(playerInputSettings.Shoot))
@@ -54,6 +56,7 @@ public class PlayerAttackSystem : MonoBehaviour
 
         aimIcon.gameObject.SetActive(isAiming);
         playerAnim.SetBool("isAiming", isAiming);
+        playerAnim.SetLayerWeight(1, isAiming ? 1 : 0);
     }
 
     public void Aim()
@@ -66,10 +69,10 @@ public class PlayerAttackSystem : MonoBehaviour
         currentTarget = playerAim.AutoAim();
         isAttacking = false;
 
-        GameObject bullet = PoolManager.Instance.GetFromPool(playerAmmo.Prefab, ammoSpawn.transform.position, Quaternion.Euler(90, 0, 0), null);
+        GameObject bullet = PoolManager.Instance.GetFromPool(playerAmmo.Prefab, ammoSpawn.transform.position, Quaternion.identity, null);
         AmmoMove ammoMove = bullet.GetComponent<AmmoMove>();
 
-        ammoMove.Setup(currentTarget ? currentTarget.transform.position : transform.position + (10 * -transform.forward), playerAmmo.Speed);
+        ammoMove.Setup(currentTarget, mainCam.transform, playerAmmo.Speed);
         //aimAnimator.SetBool("TargetLocked", currentTarget);
         //for (int i = 0; i < attackSpells.Length; i++)
         //{

@@ -10,7 +10,7 @@ public class PlayerMovementSystem : MonoBehaviour
     #region Private Fields
 
     [SerializeField] private CharacterMovement characterMovement;
-
+    [SerializeField] private PlayerUiSystem uiSystem;
     [TitleGroup("Required")]
     [SerializeField, Required] private PlayerInputSystem playerInputSystem;
     [SerializeField, Required] private Rigidbody playerController;
@@ -33,9 +33,10 @@ public class PlayerMovementSystem : MonoBehaviour
 
     private void Update()
     {
-        characterMovement.MoveInput();
+        characterMovement.MoveInput(Camera.main);
         maneuverType = playerInputSystem.ManeuverInput();
         playerAttackSystem.UpdateAttack();
+        uiSystem.ToggleMouse();
     }
 
     private void FixedUpdate()
