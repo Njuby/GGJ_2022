@@ -21,7 +21,7 @@ public class Hittable : MonoBehaviour, IHealth, IPoolObject
     public virtual void TakeDamage(int amount)
     {
         health -= amount;
-        if(health <= 0)
+        if (health <= 0)
         {
             health = 0;
             Die();
@@ -37,5 +37,14 @@ public class Hittable : MonoBehaviour, IHealth, IPoolObject
     public void OnReturnObject()
     {
         gameObject.SetActive(false);
+    }
+}
+
+public static class HitExtensions
+{
+    public static void Hit(this GameObject obj, int amount)
+    {
+        Hittable hit = obj.GetComponent<Hittable>();
+        if (hit) hit.TakeDamage(amount);
     }
 }

@@ -7,13 +7,14 @@ public class Attack : ScriptableObject
 {
     [Header("Damage amount")]
     public int directDamage;
-    public string animation;
+    public int damage;
 
     public void PlayAttack(GameObject source, GameObject reciever = null)
     {
         Animator animator = source.GetComponent<Animator>();
-        if (animator)
-            animator.Play(animation);
+        EnemyAnimationPlayer animationPlayer = source.GetComponent<EnemyAnimationPlayer>();
+        if (animationPlayer)
+            animationPlayer.DoAttack("Attack");
 
         if(reciever)
             DoDirectDamage(reciever);
@@ -21,7 +22,6 @@ public class Attack : ScriptableObject
 
     public void DoDirectDamage(GameObject reciever)
     {
-        Hittable hit = reciever.GetComponent<Hittable>();
-        if(hit) hit.TakeDamage(directDamage);
+        reciever.Hit(directDamage);
     }
 }
