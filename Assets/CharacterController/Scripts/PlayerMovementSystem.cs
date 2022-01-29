@@ -10,11 +10,12 @@ public class PlayerMovementSystem : MonoBehaviour
     #region Private Fields
 
     [SerializeField] private CharacterMovement characterMovement;
-
+    [SerializeField] private PlayerUiSystem uiSystem;
     [TitleGroup("Required")]
     [SerializeField, Required] private PlayerInputSystem playerInputSystem;
     [SerializeField, Required] private Rigidbody playerController;
-
+    [SerializeField, Required] private PlayerAttackSystem playerAttackSystem;
+    [SerializeField] private Animator anim;
     [TitleGroup("Movement")]
     [SerializeField, BoxGroup("Movement/Moving")] private float walkSpeed;
     [SerializeField, BoxGroup("Movement/Moving")] private float crouchSpeed;
@@ -32,8 +33,10 @@ public class PlayerMovementSystem : MonoBehaviour
 
     private void Update()
     {
-        characterMovement.MoveInput();
+        characterMovement.MoveInput(Camera.main);
         maneuverType = playerInputSystem.ManeuverInput();
+        playerAttackSystem.UpdateAttack();
+        uiSystem.ToggleMouse();
     }
 
     private void FixedUpdate()
@@ -51,6 +54,10 @@ public class PlayerMovementSystem : MonoBehaviour
 
     private float GetMoveSpeed()
     {
+        bool isRunning = maneuverType.HasFlag(PlayerInputSystem.ManeuverType.Run);
+        anim.SetBool("isWalking", characterMovement.InputAmount > 0);
+
+        anim.SetBool("isRunning", isRunning);
         if (dashEnabled)
         {
             dashTime -= Time.deltaTime;
@@ -60,7 +67,10 @@ public class PlayerMovementSystem : MonoBehaviour
         }
 
         if (maneuverType.HasFlag(PlayerInputSystem.ManeuverType.Crouch)) return crouchSpeed;
-        if (maneuverType.HasFlag(PlayerInputSystem.ManeuverType.Run)) return runSpeed;
+        if (isRunning)
+        {
+            return runSpeed;
+        }
         return walkSpeed;
     }
 
