@@ -9,7 +9,7 @@ public class Ability : MonoBehaviour
 
     public KeyCode code;
 
-    public void Update()
+    public virtual void Update()
     {
         timer += Time.deltaTime;
         if(Input.GetKeyDown(code))

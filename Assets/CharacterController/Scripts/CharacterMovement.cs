@@ -126,7 +126,7 @@ public class CharacterMovement : MonoBehaviour
         else { return 0; }
     }
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         if (FloorRaycasts(0, 0, 0.6f) != Vector3.zero)
         {
@@ -166,7 +166,7 @@ public class CharacterMovement : MonoBehaviour
         return currentMovespeed;
     }
 
-    private void Jump()
+    public void Jump()
     {
         if (IsGrounded())
         {

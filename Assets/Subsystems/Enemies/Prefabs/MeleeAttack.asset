@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MeleeAttack
   m_EditorClassIdentifier: 
   directDamage: 10
-  animation: Melee
+  damage: 10

@@ -38,6 +38,7 @@ public class Projectile : MonoBehaviour, IPoolObject
 
         transform.localScale = Vector3.one;
         GetComponent<TrailRenderer>()?.Clear();
+        time = 0;
     }
 
     public void OnReturnObject()

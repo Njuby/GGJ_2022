@@ -129,7 +129,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: 0.2
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -4993,7 +4993,7 @@ MonoBehaviour:
   autoLockToDistance: 10
   GoTowards: {x: 0, y: 0, z: 0}
   TowardsStrength: 10
-  twist: 100
+  twist: 200
   mask:
     serializedVersion: 2
     m_Bits: 256
