@@ -52,6 +52,8 @@ public class Enemy : Hittable
 
     public void FixedUpdate()
     {
+        if (!agent.isOnNavMesh) return;
+
         if (!MoveToTarget())
         {
             idleTime += Time.deltaTime;
