@@ -115,6 +115,9 @@ MonoBehaviour:
   target: {fileID: 0}
   detectionRange: 10
   closeToPlayerRange: 2
+  attackTimer: 0
+  attackCooldown: 2
+  attack: {fileID: 11400000, guid: 0a354ea1134aafb409de05cfadc9a98e, type: 2}
   destroyEvent: {fileID: 11400000, guid: ad725f9f04e60fd47ba6f60f3f9dd800, type: 2}
   mask:
     serializedVersion: 2

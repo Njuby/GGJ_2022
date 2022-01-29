@@ -8,11 +8,16 @@ public class Enemy : Hittable
     NavMeshAgent agent;
     public GameObject target;
 
+    [Header("Detection")]
     public float detectionRange;
     public float closeToPlayerRange;
 
-    public GameObjectEvent destroyEvent;
+    [Header("Attack")]
+    public float attackTimer;
+    public float attackCooldown;
+    [Required] public Attack attack;
 
+    [Required] public GameObjectEvent destroyEvent;
     public LayerMask mask;
 
     public void Start()
@@ -29,7 +34,6 @@ public class Enemy : Hittable
 
     public void Target(GameObject target)
     {
-
         this.target = target;
     }
 
@@ -39,6 +43,7 @@ public class Enemy : Hittable
         {
             MoveToTarget();
         }
+        attackTimer += Time.deltaTime;
     }
 
     public void MoveToTarget()
@@ -56,15 +61,19 @@ public class Enemy : Hittable
             }
         }
 
-        if(distance <= closeToPlayerRange)
+        if (distance <= closeToPlayerRange)
         {
-            DamagePlayer();
+            if (attackTimer >= attackCooldown)
+            {
+                attackTimer = 0;
+                Attack();
+            }
         }
     }
 
-    public void DamagePlayer()
+    public void Attack()
     {
-        target.GetComponent<Hittable>().TakeDamage(5);
+        attack.PlayAttack(gameObject, target);
     }
 
     public void OnDrawGizmosSelected()
@@ -74,6 +83,7 @@ public class Enemy : Hittable
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, closeToPlayerRange);
 
+        if (!target) return;
         Vector3 direction = target.transform.position - transform.position;
         float distance = Vector3.Distance(transform.position, target.transform.position);
 
