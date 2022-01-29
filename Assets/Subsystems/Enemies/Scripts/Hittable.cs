@@ -13,6 +13,11 @@ public class Hittable : MonoBehaviour, IHealth, IPoolObject
     public int PoolKey { get; set; }
     public ObjectInstance ObjInstance { get; set; }
 
+    public void OnEnable()
+    {
+        health = maxHealth;
+    }
+
     public virtual void Die()
     {
         PoolManager.Instance.ReturnToPool(gameObject);

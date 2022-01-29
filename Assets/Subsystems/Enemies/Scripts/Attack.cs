@@ -11,7 +11,6 @@ public class Attack : ScriptableObject
 
     public void PlayAttack(GameObject source, GameObject reciever = null)
     {
-        Animator animator = source.GetComponent<Animator>();
         EnemyAnimationPlayer animationPlayer = source.GetComponent<EnemyAnimationPlayer>();
         if (animationPlayer)
             animationPlayer.DoAttack("Attack");

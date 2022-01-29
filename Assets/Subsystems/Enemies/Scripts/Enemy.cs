@@ -34,6 +34,14 @@ public class Enemy : Hittable
     [Button("Kill")]
     public override void Die()
     {
+        for (int i = transform.childCount - 1; i >= 0; i--)
+        {
+            if (transform.GetChild(i).GetComponent<IPoolObject>() != null)
+            {
+                PoolManager.Instance.ReturnToPool(transform.GetChild(i).gameObject);
+            }
+        }
+
         destroyEvent.Raise(gameObject);
     }
 
