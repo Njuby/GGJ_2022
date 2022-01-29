@@ -5312,6 +5312,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Custom_SkyBox]'
       objectReference: {fileID: 0}
+    - target: {fileID: 3206133019243640245, guid: 5be2bb8669dc06b4a8d74667fbf25f4f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206133020951206136, guid: 5be2bb8669dc06b4a8d74667fbf25f4f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5be2bb8669dc06b4a8d74667fbf25f4f, type: 3}
 --- !u!4 &1880736280076679474 stripped
