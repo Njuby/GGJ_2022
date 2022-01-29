@@ -37,9 +37,10 @@ public class StompAbility : Ability
         base.Update();
         if (jumping)
         {
-            if (RaycastTools.RayCastFromPos(transform.position, Vector3.down, groundMask, out RaycastHit hit))
+            if (RaycastTools.RayCastFromPos(transform.position + Vector3.up * 5, Vector3.down, groundMask, out RaycastHit hit))
             {
                 preview.transform.position = hit.point;
+                effect.transform.position = hit.point;
             }
         }
     }
@@ -62,7 +63,7 @@ public class StompAbility : Ability
         yield return new WaitForSeconds(0.2f);
         yield return new WaitUntil(() => player.IsGrounded());
 
-        List<float> distanceList= new List<float>();
+        List<float> distanceList = new List<float>();
 
         var colliders = Physics.OverlapSphere(transform.position, damageRadius, enemyMask);
         for (int i = 0; i < colliders.Length; i++)
@@ -78,15 +79,15 @@ public class StompAbility : Ability
 
     public IEnumerator DoEffect(List<float> distances, Collider[] colliders)
     {
-        effect.GetComponent<MeshRenderer>().material.SetVector("_Pointer", transform.position);
-        effect.GetComponent<MeshRenderer>().material.SetFloat("_Scale", damageRadius);
+        effect.GetComponentInChildren<MeshRenderer>().material.SetVector("_Pointer", transform.position);
+        effect.GetComponentInChildren<MeshRenderer>().material.SetFloat("_Scale", damageRadius);
+
+        effect.SetActive(true);
 
         float clusterStep = damageRadius / clusterCount;
         for (int i = 0; i < clusterCount; i++)
         {
-            effect.SetActive(true);
-
-            effect.GetComponent<MeshRenderer>().material.SetFloat("_Timer", (i / (float)clusterCount));
+            effect.GetComponentInChildren<MeshRenderer>().material.SetFloat("_Timer", (i / (float)clusterCount));
 
             Quaternion rotation = Quaternion.Euler(0, Random.Range(0f, 360f), 0);
             float distance = Random.Range(clusterStep * i - clusterStep, clusterStep * i);
@@ -94,7 +95,7 @@ public class StompAbility : Ability
 
             for (int j = 0; j < distances.Count; j++)
             {
-                if(distances[j] > clusterStep * i - clusterStep && distances[j] < clusterStep * i)
+                if (distances[j] > clusterStep * i - clusterStep && distances[j] < clusterStep * i)
                 {
                     colliders[j].gameObject.Hit(damage);
                 }
@@ -104,7 +105,7 @@ public class StompAbility : Ability
             spike.transform.position += spike.transform.forward * distance;
             spike.transform.localScale = Vector3.zero;
 
-            if (RaycastTools.RayCastFromPos(spike.transform.position, Vector3.down, groundMask, out RaycastHit hit))
+            if (RaycastTools.RayCastFromPos(spike.transform.position + Vector3.up * 5, Vector3.down, groundMask, out RaycastHit hit))
             {
                 spike.transform.position = hit.point;
             }

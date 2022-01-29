@@ -46,9 +46,7 @@ public class EnemySpawner : MonoBehaviour
         Vector3 pos = (transform.position + transform.forward * distance) + Vector3.up;
         if (RaycastTools.RayCastFromPos(pos, Vector3.down, groundMask, out RaycastHit hit))
         {
-            Debug.Log(hit.point);
             GameObject obj = PoolManager.Instance.GetFromPool(enemy[enemyType], hit.point, rotation, null);
-            // obj.transform.position += transform.forward * distance;
             spawnedEnemies.Add(obj);
         }
     }

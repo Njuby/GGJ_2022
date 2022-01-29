@@ -66,7 +66,7 @@ public class Enemy : Hittable
     {
         if (target == null) return false;
 
-        Vector3 direction = target.transform.position - transform.position;
+        Vector3 direction = (target.transform.position + Vector3.up) - (transform.position + Vector3.up);
         float distance = Vector3.Distance(transform.position, target.transform.position);
 
         if (distance > detectionRange) { return false; }
@@ -80,16 +80,11 @@ public class Enemy : Hittable
             }
         }
 
-        if (RaycastTools.RayCastFromPos(transform.position, direction, mask, out RaycastHit hit))
-        {
-            if (hit.transform == target.transform)
-            {
+        //if (RaycastTools.RayCastFromPos(transform.position + Vector3.up, direction, mask, out RaycastHit hit))
+        //{
                 agent.SetDestination(target.transform.position - direction.normalized * closeToPlayerRange);
                 return true;
-            }
-        }
-
-        return false;
+      //  }
     }
 
     public void Wander()
@@ -98,7 +93,14 @@ public class Enemy : Hittable
             return;
 
         if (wanderTarget == Vector3.zero)
-            wanderTarget = transform.position + new Vector3(Random.Range(-5f, 5f), 0, Random.Range(-5f, 5f));
+        {
+            wanderTarget = transform.position + new Vector3(Random.Range(-25f, 25f), 0, Random.Range(-25f, 25f));
+            if (RaycastTools.RayCastFromPos(wanderTarget + Vector3.up * 20, Vector3.down, mask, out RaycastHit hit))
+            {
+                wanderTarget = hit.point;
+            }
+        }
+
 
         agent.SetDestination(wanderTarget);
 
@@ -127,12 +129,12 @@ public class Enemy : Hittable
         Gizmos.DrawWireSphere(transform.position, closeToPlayerRange);
 
         if (!target) return;
-        Vector3 direction = target.transform.position - transform.position;
+        Vector3 direction = (target.transform.position + Vector3.up) - (transform.position + Vector3.up);
         float distance = Vector3.Distance(transform.position, target.transform.position);
 
         if (distance > detectionRange) { return; }
 
-        if (RaycastTools.RayCastFromPos(transform.position, direction, mask, out RaycastHit hit))
+        if (RaycastTools.RayCastFromPos(transform.position + Vector3.up, direction, mask, out RaycastHit hit))
         {
             if (hit.transform == target.transform)
             {
