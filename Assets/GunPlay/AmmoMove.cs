@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using DG.Tweening;
 
 public class AmmoMove : MonoBehaviour, IPoolObject
 {
@@ -8,11 +9,16 @@ public class AmmoMove : MonoBehaviour, IPoolObject
 
     private Vector3 targetPos;
     private Vector3 direction;
+    private Vector3 velocity;
 
-    public void Setup(Vector3 targetPos, float speed)
+    public void Setup(Transform target, Transform camTrans, float speed)
     {
-        this.targetPos = targetPos;
-        direction = (transform.position - targetPos).normalized * speed;
+        Vector3 offset = Vector3.up;
+        targetPos = target != null ? target.position : transform.position + (camTrans.transform.forward * 30) + offset;
+        direction = (targetPos - transform.position).normalized;
+        transform.LookAt(targetPos);
+        //rb.DOMove(targetPos, direction.magnitude / speed);
+        velocity = rb.transform.forward * (direction.magnitude * speed);
     }
 
     public void OnGetObject(ObjectInstance objectInstance, int poolKey)
@@ -23,7 +29,7 @@ public class AmmoMove : MonoBehaviour, IPoolObject
 
     private void Update()
     {
-        rb.velocity = direction;
+        rb.velocity = velocity;
     }
 
     private void OnTriggerEnter(Collider other)

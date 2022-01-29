@@ -15,7 +15,7 @@ MonoBehaviour:
   run: 304
   jump: 32
   dash: 113
-  crouch: 306
+  crouch: 308
   aim: 324
   shoot: 323
-  toggleMouse: 0
+  toggleMouse: 306

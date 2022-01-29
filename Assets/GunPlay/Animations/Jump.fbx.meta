@@ -38,7 +38,7 @@ ModelImporter:
       name: Ellen_Jump
       takeName: mixamo.com
       internalID: 0
-      firstFrame: 0
+      firstFrame: 24
       lastFrame: 78
       wrapMode: 0
       orientationOffsetY: 0
