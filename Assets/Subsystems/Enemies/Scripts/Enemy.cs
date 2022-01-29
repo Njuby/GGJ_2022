@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityAtoms.BaseAtoms;
 using UnityEngine.AI;
 using Sirenix.OdinInspector;
+using System.Collections;
+using DG.Tweening;
 
 public class Enemy : Hittable
 {
@@ -25,10 +27,30 @@ public class Enemy : Hittable
     [Required] public GameObjectEvent destroyEvent;
     public LayerMask mask;
 
+    public void Awake()
+    {
+        Sequence seq = DOTween.Sequence();
+
+        seq.AppendInterval(0.4f);
+        seq.AppendCallback(() => agent.enabled = true);
+
+        agent = GetComponent<NavMeshAgent>();
+        agent.enabled = false;
+    }
+
+    //public IEnumerator EnableAgent()
+    //{
+    //    while (true)
+    //    {
+    //        yield return null;
+    //        agent.enabled = true;
+    //        yield break;
+    //    }
+    //}
+
     public void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player");
-        agent = GetComponent<NavMeshAgent>();
     }
 
     [Button("Kill")]
@@ -82,9 +104,9 @@ public class Enemy : Hittable
 
         //if (RaycastTools.RayCastFromPos(transform.position + Vector3.up, direction, mask, out RaycastHit hit))
         //{
-                agent.SetDestination(target.transform.position - direction.normalized * closeToPlayerRange);
-                return true;
-      //  }
+        agent.SetDestination(target.transform.position - direction.normalized * closeToPlayerRange);
+        return true;
+        //  }
     }
 
     public void Wander()

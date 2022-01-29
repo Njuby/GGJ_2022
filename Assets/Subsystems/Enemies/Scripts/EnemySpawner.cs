@@ -19,9 +19,14 @@ public class EnemySpawner : MonoBehaviour
 
     public LayerMask groundMask;
 
+    public bool fillSpawner;
+    public bool dontRespawn;
+
     public void Update()
     {
         if (spawnedEnemies.Count >= spawnLimit) return;
+
+        if (dontRespawn) return;
 
         time += Time.deltaTime;
         if (time > spawnTime)
@@ -34,12 +39,20 @@ public class EnemySpawner : MonoBehaviour
     public void OnEnable()
     {
         destroyedObj.Register(DespawnEnemy);
+
+        if (fillSpawner)
+        {
+            for (int i = 0; i < spawnLimit; i++)
+            {
+                SpawnEnemy();
+            }
+        }
     }
 
     public void SpawnEnemy()
     {
         int enemyType = Random.Range(0, enemy.Length);
-        Quaternion rotation = Quaternion.Euler(0, Random.Range(0f, 360f), 0);
+        Quaternion rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y + Random.Range(0f, 360f), 0);
         float distance = Random.Range(0, radius);
 
         transform.rotation = rotation;

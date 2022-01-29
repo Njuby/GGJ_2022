@@ -3140,7 +3140,7 @@ MonoBehaviour:
   health: 100
   target: {fileID: 0}
   wanderTarget: {x: 0, y: 0, z: 0}
-  detectionRange: 100
+  detectionRange: 50
   closeToPlayerRange: 5
   attackTimer: 5
   attackCooldown: 5
