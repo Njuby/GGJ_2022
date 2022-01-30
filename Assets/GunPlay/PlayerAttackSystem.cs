@@ -1,6 +1,7 @@
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerAttackSystem : MonoBehaviour
 {
@@ -11,7 +12,9 @@ public class PlayerAttackSystem : MonoBehaviour
     [TitleGroup("Aim")]
     [SerializeField, Required, BoxGroup("Aim/", false)] private Camera mainCam;
     [SerializeField, Required, BoxGroup("Aim/", false)] private Transform model;
-    [SerializeField, Required, BoxGroup("Aim/", false)] private Transform aimIcon;
+    [SerializeField, Required, BoxGroup("Aim/", false)] private Image aimIcon;
+    [SerializeField, Required, BoxGroup("Aim/", false)] private Color targetFound;
+    [SerializeField, Required, BoxGroup("Aim/", false)] private Color nothingFound;
     [SerializeField, Required, BoxGroup("Aim/", false)] private AimSystem playerAim;
     [SerializeField, Required, BoxGroup("Aim/", false)] private Animator playerAnim;
     [SerializeField, Required, BoxGroup("Aim/", false)] private GameObject ammoSpawn;
@@ -28,6 +31,8 @@ public class PlayerAttackSystem : MonoBehaviour
 
     public bool IsAttacking => isAttacking;
 
+    public bool IsAiming { get => isAiming; set => isAiming = value; }
+
     public void Setup(AimSystem aimSystem)
     {
         playerAim = aimSystem;
@@ -35,6 +40,8 @@ public class PlayerAttackSystem : MonoBehaviour
 
     public void UpdateAttack()
     {
+        currentTarget = playerAim.AutoAim();
+
         if (Input.GetKeyDown(playerInputSettings.Aim))
         {
             isAiming = !isAiming;
@@ -55,6 +62,8 @@ public class PlayerAttackSystem : MonoBehaviour
         }
 
         aimIcon.gameObject.SetActive(isAiming);
+        aimIcon.color = currentTarget ? targetFound : nothingFound;
+
         playerAnim.SetBool("isAiming", isAiming);
         playerAnim.SetLayerWeight(1, isAiming ? 1 : 0);
     }
