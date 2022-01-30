@@ -12,7 +12,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Vector2 pitchMinMax;
     [SerializeField] private Transform target;
     [SerializeField] private float cameraMoveSpeed;
-    [SerializeField] private Vector3 offSet;
+    [SerializeField] private float offSet;
     [SerializeField] private float distanceFromTarget;
     private Vector3 rotSmoothVel;
 
@@ -43,7 +43,7 @@ public class CameraController : MonoBehaviour
     {
         //float step = cameraMoveSpeed * Time.deltaTime;
         //transform.position = Vector3.MoveTowards(transform.position, target.position + offSet, step);
-        transform.position = target.position - transform.forward * distanceFromTarget;
+        transform.position = target.position - transform.forward * distanceFromTarget + (offSet * transform.right);
         //offSet = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * sensitivity, Vector3.up) * offSet;
         //transform.position = target.position + offSet;
         //transform.LookAt(target.position + offSet);
