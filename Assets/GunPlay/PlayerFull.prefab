@@ -1272,7 +1272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 812354828187883191, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
       propertyPath: groundLayer.m_Bits
-      value: 64
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 941237683293610156, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
       propertyPath: m_Height
@@ -1418,6 +1418,14 @@ PrefabInstance:
       propertyPath: aimObject
       value: 
       objectReference: {fileID: 3862113732930293714}
+    - target: {fileID: 8273424030255911712, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+      propertyPath: maxTargetDistance
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8273424030255911712, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+      propertyPath: targetLayerMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2920814120113847456, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
