@@ -1036,7 +1036,7 @@ GameObject:
   - component: {fileID: 3862113733200726902}
   m_Layer: 3
   m_Name: PlayerFull
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1119,7 +1119,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 5000
+  far clip plane: 10000
   field of view: 40
   orthographic: 0
   orthographic size: 5
@@ -1263,8 +1263,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 812354828187883191, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+      propertyPath: maxGravity
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 812354828187883191, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
       propertyPath: floorOffsetY
       value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 812354828187883191, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 941237683293610156, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
       propertyPath: m_Height
@@ -1346,6 +1354,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3740911580042642574, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.08
+      objectReference: {fileID: 0}
     - target: {fileID: 3862113731634651508, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
       propertyPath: aimIcon
       value: 
@@ -1366,6 +1378,18 @@ PrefabInstance:
       propertyPath: OnDash
       value: 
       objectReference: {fileID: 11400000, guid: 8bc128b8f82f68849a853d6330413f58, type: 2}
+    - target: {fileID: 7484614874864697392, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+      propertyPath: runSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7484614874864697392, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+      propertyPath: dashSpeed
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 7484614874864697392, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+      propertyPath: walkSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7484614874864697392, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
       propertyPath: mutantActivated
       value: 
@@ -1397,6 +1421,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2920814120113847456, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+--- !u!4 &4077738250599357425 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 941237683293610159, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+  m_PrefabInstance: {fileID: 3862113732302879582}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8440361307756105988 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4664273571639667290, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
@@ -1432,6 +1461,11 @@ SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 7553968944415629325, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
   m_PrefabInstance: {fileID: 3862113732302879582}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &6723290683511809425 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7553968944419708623, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+  m_PrefabInstance: {fileID: 3862113732302879582}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6723290683521420247 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7553968944427495561, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
@@ -1440,11 +1474,6 @@ Transform:
 --- !u!1 &6723290683521324983 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7553968944427134185, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
-  m_PrefabInstance: {fileID: 3862113732302879582}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4077738250599357425 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 941237683293610159, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
   m_PrefabInstance: {fileID: 3862113732302879582}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &4530317294687251945 stripped
@@ -1470,7 +1499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f25f4dc28ab51be468dfd20a95a54fd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MutantLevelChange: {fileID: 0}
+  MutantLevelChange: {fileID: 11400000, guid: 67fcef5428949644da7d4d3371547be4, type: 2}
   TimeValue: 1
   DecreaseStrengthBy: 10
   mutationStrengthBar: {fileID: 1384832857}
@@ -1540,9 +1569,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
-  cooldownTime: 10
+  cooldownTime: 0
   code: 113
   player: {fileID: 4530317294687251945}
+  anim: {fileID: 6723290683511809425}
   mutantStrengthEvent: {fileID: 11400000, guid: 67fcef5428949644da7d4d3371547be4, type: 2}
   preview: {fileID: 8440361307756105988}
   effect: {fileID: 4649895555257338410}

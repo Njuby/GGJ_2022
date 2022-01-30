@@ -11,7 +11,8 @@ public class CharacterMovement : MonoBehaviour
     public float slopeLimit = 45f;
     public float slopeInfluence = 5f;
     public float jumpPower = 10f;
-
+    public float maxGravity;
+    public LayerMask groundLayer;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Animator anim;
     private float vertical;
@@ -89,6 +90,11 @@ public class CharacterMovement : MonoBehaviour
         if (!IsGrounded() || slopeAmount >= 0.1f)// if going down, also apply, to stop bouncing
         {
             gravity += Vector3.up * Physics.gravity.y * jumpFalloff * Time.fixedDeltaTime;
+            if (gravity.y < maxGravity)
+            {
+                gravity.y = 0;
+                rb.MovePosition(transform.position + (transform.up * 5f));
+            }
         }
 
         // actual movement of the rigidbody + extra down force
@@ -150,7 +156,7 @@ public class CharacterMovement : MonoBehaviour
         raycastFloorPos = transform.TransformPoint(0 + offsetx, 0 + 0.5f, 0 + offsetz);
 
         Debug.DrawRay(raycastFloorPos, Vector3.down, color);
-        if (Physics.Raycast(raycastFloorPos, -Vector3.up, out hit, raycastLength))
+        if (Physics.Raycast(raycastFloorPos, -Vector3.up, out hit, raycastLength, layerMask: groundLayer))
         {
             floorNormal = hit.normal;
 
