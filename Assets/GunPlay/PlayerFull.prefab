@@ -1267,12 +1267,20 @@ PrefabInstance:
       value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 812354828187883191, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+      propertyPath: slopeLimit
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 812354828187883191, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
       propertyPath: attackSystem
       value: 
       objectReference: {fileID: 674224682}
     - target: {fileID: 812354828187883191, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
       propertyPath: floorOffsetY
       value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 812354828187883191, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+      propertyPath: slopeInfluence
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 812354828187883191, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
       propertyPath: groundLayer.m_Bits
