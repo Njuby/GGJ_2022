@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5423523, g: 0.2907409, b: 0.5666254, a: 1}
+  m_IndirectSpecularColor: {r: 0.67570966, g: 0.11755642, b: 0.35090092, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -130,6 +130,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 460963687, guid: 97525ad86ee1d2f4c83f4b4054198a36, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1922285690}
+    - target: {fileID: 460963687, guid: 97525ad86ee1d2f4c83f4b4054198a36, type: 3}
+      propertyPath: cooldownTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 599331069, guid: 97525ad86ee1d2f4c83f4b4054198a36, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1384832855, guid: 97525ad86ee1d2f4c83f4b4054198a36, type: 3}
+      propertyPath: MutantLevelChange
+      value: 
+      objectReference: {fileID: 11400000, guid: 67fcef5428949644da7d4d3371547be4, type: 2}
+    - target: {fileID: 1516236507, guid: 97525ad86ee1d2f4c83f4b4054198a36, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 464601632454508496, guid: 97525ad86ee1d2f4c83f4b4054198a36, type: 3}
       propertyPath: m_LocalPosition.y
       value: 6.08
@@ -815,3 +835,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1922285690 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6723290683511809425, guid: 97525ad86ee1d2f4c83f4b4054198a36, type: 3}
+  m_PrefabInstance: {fileID: 95284460}
+  m_PrefabAsset: {fileID: 0}

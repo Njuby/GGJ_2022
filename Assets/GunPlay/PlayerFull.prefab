@@ -1370,6 +1370,18 @@ PrefabInstance:
       propertyPath: mutantActivated
       value: 
       objectReference: {fileID: 11400000, guid: 3d24be11baabdd34980fce9d80da6007, type: 2}
+    - target: {fileID: 8145155001757498683, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+      propertyPath: mutantcy
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8145155001757498683, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+      propertyPath: spikeAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8145155001757498683, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+      propertyPath: mutantStrengthEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 67fcef5428949644da7d4d3371547be4, type: 2}
     - target: {fileID: 8229135729489738356, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
       propertyPath: m_CastShadows
       value: 0
@@ -1385,11 +1397,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2920814120113847456, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
---- !u!4 &4077738250599357425 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 941237683293610159, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
-  m_PrefabInstance: {fileID: 3862113732302879582}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8440361307756105988 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4664273571639667290, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
@@ -1425,11 +1432,6 @@ SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 7553968944415629325, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
   m_PrefabInstance: {fileID: 3862113732302879582}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &6723290683511809425 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7553968944419708623, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
-  m_PrefabInstance: {fileID: 3862113732302879582}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6723290683521420247 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7553968944427495561, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
@@ -1438,6 +1440,11 @@ Transform:
 --- !u!1 &6723290683521324983 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7553968944427134185, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+  m_PrefabInstance: {fileID: 3862113732302879582}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4077738250599357425 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 941237683293610159, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
   m_PrefabInstance: {fileID: 3862113732302879582}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &4530317294687251945 stripped
@@ -1463,6 +1470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f25f4dc28ab51be468dfd20a95a54fd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MutantLevelChange: {fileID: 0}
   TimeValue: 1
   DecreaseStrengthBy: 10
   mutationStrengthBar: {fileID: 1384832857}
@@ -1535,18 +1543,19 @@ MonoBehaviour:
   cooldownTime: 10
   code: 113
   player: {fileID: 4530317294687251945}
-  playerAnim: {fileID: 6723290683511809425}
+  mutantStrengthEvent: {fileID: 11400000, guid: 67fcef5428949644da7d4d3371547be4, type: 2}
   preview: {fileID: 8440361307756105988}
   effect: {fileID: 4649895555257338410}
   spikeCluster: {fileID: 3566968046411811929, guid: 06e5ba550a9abd94aa6eeee812b62f03, type: 3}
-  clusterCount: 100
+  clusterCount: 50
   spawnPerFrame: 5
-  damageRadius: 15
-  damage: 50
+  damageRadius: 5
+  damage: 20
   enemyMask:
     serializedVersion: 2
     m_Bits: 256
   groundMask:
     serializedVersion: 2
     m_Bits: 1
-  jumping: 0
+  deadzone: 3
+  mutantcy: 3

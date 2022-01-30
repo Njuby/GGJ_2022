@@ -7,7 +7,7 @@ using UnityEngine;
 public class StompAbility : Ability
 {
     public CharacterMovement player;
-
+    public Animator anim;
     public IntEvent mutantStrengthEvent;
 
     public GameObject preview;
@@ -34,8 +34,6 @@ public class StompAbility : Ability
 
     public void OnEnable()
     {
-        player = GetComponentInChildren<CharacterMovement>();
-
         preview.SetActive(false);
         effect.SetActive(false);
 
@@ -59,13 +57,32 @@ public class StompAbility : Ability
     {
         base.DoAbility();
 
-        player.Jump();
+        player.Jump(false);
 
         preview.SetActive(true);
 
-        StartCoroutine(WaitForHitGround());
+        //StartCoroutine(WaitForHitGround());
 
         jumping = true;
+    }
+
+    public void Stomp()
+    {
+        preview.transform.localScale = Vector3.one * damageRadius * mutantcy;
+        effect.transform.localScale = Vector3.one * damageRadius * mutantcy;
+        anim.SetBool("isAttacking", false);
+        List<float> distanceList = new List<float>();
+
+        var colliders = Physics.OverlapSphere(transform.position, damageRadius * mutantcy, enemyMask);
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            distanceList.Add(Vector3.Distance(colliders[i].transform.position, transform.position));
+        }
+        preview.SetActive(false);
+
+        StartCoroutine(DoEffect(distanceList, colliders));
+
+        jumping = false;
     }
 
     public IEnumerator WaitForHitGround()
@@ -104,7 +121,6 @@ public class StompAbility : Ability
                 colliders[j].gameObject.Hit(damage * mutantcy);
             }
         }
-
 
         float clusterStep = (damageRadius * mutantcy - deadzone) / (clusterCount * mutantcy);
         for (int i = 0; i < clusterCount * mutantcy; i++)
@@ -145,7 +161,6 @@ public class StompAbility : Ability
         }
 
         effect.SetActive(false);
-
     }
 
     public void OnDrawGizmos()
