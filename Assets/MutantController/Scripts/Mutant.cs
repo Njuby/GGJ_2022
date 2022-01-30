@@ -1,9 +1,11 @@
 using UnityEngine;
 using System;
 using Assets.MutantController.Scripts;
+using UnityAtoms.BaseAtoms;
 
 public class Mutant : MonoBehaviour
 {
+    public IntEvent MutantLevelChange;
 
     public event Action OnMutationModeActivated;
 
@@ -89,6 +91,7 @@ public class Mutant : MonoBehaviour
     private void IncreaseMutantStrength(float strength)
     {
         CurrentMutantStrength += strength;
+        MutantLevelChange.Raise((int)CurrentMutantStrength);
         mutationStrengthBar.SetMutantStrength(CurrentMutantStrength);
         
     }
@@ -96,6 +99,7 @@ public class Mutant : MonoBehaviour
     private void DecreaseMutantStrength(float strength)
     {
         CurrentMutantStrength -= strength;
+        MutantLevelChange.Raise((int)CurrentMutantStrength);
         mutationStrengthBar.SetMutantStrength(CurrentMutantStrength);
     }
 
