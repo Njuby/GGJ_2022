@@ -6,6 +6,8 @@ using UnityAtoms.BaseAtoms;
 public class Mutant : MonoBehaviour
 {
     public IntEvent MutantLevelChange;
+    public VoidEvent MutantDamageTaken;
+    public IntEvent useAbilityEvent;
 
     public event Action OnMutationModeActivated;
 
@@ -34,9 +36,13 @@ public class Mutant : MonoBehaviour
 
     private Rigidbody rb;
 
+    private float damageTime;
+    public float damageTimer;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        useAbilityEvent.Register((x) => IncreaseMutantStrength(x));
     }
     // Start is called before the first frame update
     void Start()
@@ -52,6 +58,16 @@ public class Mutant : MonoBehaviour
         if (isMutantMode)
         {
             MutationModeDuration();
+
+            if (CurrentMutantStrength > maxMutantStrength)
+            {
+                damageTime += Time.deltaTime;
+                if (damageTime > damageTimer)
+                {
+                    damageTime = 0;
+                    MutantDamageTaken.Raise();
+                }
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -91,7 +107,7 @@ public class Mutant : MonoBehaviour
         if (TimeValue < 0)
         {
             DecreaseMutantStrength(DecreaseStrengthBy);
-            DecreaseStrengthBy++;
+            DecreaseStrengthBy += 0.05f;
             TimeValue = 1f;
 
             if (CurrentMutantStrength <= 0)
@@ -119,6 +135,7 @@ public class Mutant : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Mutancy"))
         {
+            Debug.Log(other.gameObject);
             //Increase matancy of player
             Destroy(other.transform.parent.gameObject);
             IncreaseMutantStrength(increaseOnCOllect);

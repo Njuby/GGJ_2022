@@ -8,13 +8,14 @@ using UnityEditor;
 
 public class Enemy : Hittable
 {
-    NavMeshAgent agent;
+    private NavMeshAgent agent;
     public GameObject target;
     public Vector3 wanderTarget;
-
+    public Animator animator;
     public AudioCue attackCue;
     public AudioCue idleCue;
     public AudioCue aggroCue;
+    public GameObject deathPrefab;
 
     [Header("Detection")]
     public float detectionRange;
@@ -61,6 +62,8 @@ public class Enemy : Hittable
     [Button("Kill")]
     public override void Die()
     {
+        GameObject death = PoolManager.Instance.GetFromPool(deathPrefab, transform.position, Quaternion.identity);
+        death.transform.localScale = Vector3.one * 5;
         for (int i = transform.childCount - 1; i >= 0; i--)
         {
             if (transform.GetChild(i).GetComponent<IPoolObject>() != null)
@@ -89,7 +92,8 @@ public class Enemy : Hittable
         attackTimer += Time.deltaTime;
     }
 
-    bool prevInRange;
+    private bool prevInRange;
+
     public bool MoveToTarget()
     {
         if (target == null) return false;
@@ -110,7 +114,7 @@ public class Enemy : Hittable
 
         //if (RaycastTools.RayCastFromPos(transform.position + Vector3.up, direction, mask, out RaycastHit hit))
         //{
-        if(!prevInRange)
+        if (!prevInRange)
         {
             attackCue.PlayAudioCue(transform);
         }
@@ -136,7 +140,6 @@ public class Enemy : Hittable
             }
         }
 
-
         agent.SetDestination(wanderTarget);
 
         if (Vector3.Distance(wanderTarget, transform.position) < 1f)
@@ -155,6 +158,13 @@ public class Enemy : Hittable
     public void DoDamage()
     {
         if (target) target.Hit(attack.damage);
+    }
+
+    public override void TakeDamage(int amount)
+    {
+        base.TakeDamage(amount);
+        int index = Random.Range(0, 4);
+        animator.Play($"Hit_{index}");
     }
 
     public void OnDrawGizmosSelected()
