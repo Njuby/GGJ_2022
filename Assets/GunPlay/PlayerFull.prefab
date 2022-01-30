@@ -919,6 +919,14 @@ PrefabInstance:
       propertyPath: spawnPerFrame
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3100034207740227919, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+      propertyPath: timeTillHeal
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3100034207740227919, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+      propertyPath: DamageTakenFromMutant
+      value: 
+      objectReference: {fileID: 11400000, guid: 90e7c2ba51e2afc448c8a40982fd1da5, type: 2}
     - target: {fileID: 3125697882793401466, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -1032,6 +1040,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8145155001757498683, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+      propertyPath: mutantChangeEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 1784321b5eb15a540a3f0d6607171917, type: 2}
+    - target: {fileID: 8145155001757498683, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
       propertyPath: mutantStrengthEvent
       value: 
       objectReference: {fileID: 11400000, guid: 67fcef5428949644da7d4d3371547be4, type: 2}
@@ -1120,6 +1132,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7382150037727157887, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
   m_PrefabInstance: {fileID: 3862113732302879582}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1760269360479369937 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3311623822409613711, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+  m_PrefabInstance: {fileID: 3862113732302879582}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4530317294687251945 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 812354828187883191, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
@@ -1131,11 +1148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b52943dd3644434b9c2bb5c1d734c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1760269360479369937 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3311623822409613711, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
-  m_PrefabInstance: {fileID: 3862113732302879582}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4649895555257338410 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8439539702810947956, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
@@ -1159,7 +1171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MutantLevelChange: {fileID: 11400000, guid: 67fcef5428949644da7d4d3371547be4, type: 2}
-  TimeValue: 1
+  MutantDamageTaken: {fileID: 11400000, guid: 90e7c2ba51e2afc448c8a40982fd1da5, type: 2}
+  TimeValue: 5
   baseDecreaseStrengthBy: 10
   DecreaseStrengthBy: 10
   mutationStrengthBar: {fileID: 1384832857}
@@ -1168,6 +1181,7 @@ MonoBehaviour:
   mutantLevel: 4
   isMutantMode: 0
   increaseOnCOllect: 3
+  damageTimer: 3
 --- !u!114 &1384832857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1218,6 +1232,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnDash: {fileID: 11400000, guid: 8bc128b8f82f68849a853d6330413f58, type: 2}
   dashVFX: {fileID: 1490204482}
+--- !u!65 &655048680
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760269360479369937}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 9.59, z: 1}
+  m_Center: {x: 0, y: 4.6, z: 0}
 --- !u!114 &460963687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1236,6 +1263,7 @@ MonoBehaviour:
   player: {fileID: 4530317294687251945}
   anim: {fileID: 6723290683511809425}
   mutantStrengthEvent: {fileID: 11400000, guid: 67fcef5428949644da7d4d3371547be4, type: 2}
+  mutantChangeEvent: {fileID: 11400000, guid: 1784321b5eb15a540a3f0d6607171917, type: 2}
   preview: {fileID: 8440361307756105988}
   effect: {fileID: 4649895555257338410}
   spikeCluster: {fileID: 3566968046411811929, guid: 06e5ba550a9abd94aa6eeee812b62f03, type: 3}
