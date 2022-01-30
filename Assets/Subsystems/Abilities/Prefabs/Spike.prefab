@@ -4938,20 +4938,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ecb4e375cfd7cb41b00d9cc0cdc3fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 50
+  velocity: 10
   gravity: 1
-  autoLockToDistance: 10
+  autoLockToDistance: 20
   GoTowards: {x: 0, y: 0, z: 0}
-  TowardsStrength: 20
-  twist: 200
+  TowardsStrength: 2
+  twist: 50
   mask:
     serializedVersion: 2
     m_Bits: 256
-  damage: 5
+  baseDamage: 5
   DespawnTime: 2
   DieOutTime: 10
   time: 0
   stopped: 0
+  strength: 5
 --- !u!65 &-8797384928284598215
 BoxCollider:
   m_ObjectHideFlags: 0
