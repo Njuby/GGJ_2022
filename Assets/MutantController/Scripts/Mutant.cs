@@ -19,10 +19,10 @@ public class Mutant : MonoBehaviour
     public MutantStrengthBar mutationStrengthBar;
 
     [SerializeField]
-    private float maxMutantStrength = 50f;
+    public float maxMutantStrength = 50f;
 
     [SerializeField]
-    private float CurrentMutantStrength;
+    public float CurrentMutantStrength;
 
     [SerializeField]
     private int mutantLevel = 4;
@@ -41,7 +41,7 @@ public class Mutant : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CurrentMutantStrength = maxMutantStrength;
+        CurrentMutantStrength = 5;
         DecreaseStrengthBy = baseDecreaseStrengthBy;
     }
 
@@ -113,7 +113,7 @@ public class Mutant : MonoBehaviour
         if (other.gameObject.CompareTag("Mutancy"))
         {
             //Increase matancy of player
-            PoolManager.Instance.ReturnToPool(other.gameObject);
+            Destroy(other.transform.parent.gameObject);
             IncreaseMutantStrength(increaseOnCOllect);
         }
     }
