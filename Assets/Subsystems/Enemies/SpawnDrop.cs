@@ -15,6 +15,6 @@ public class SpawnDrop : MonoBehaviour
 
     public void DropMutantEssence(GameObject enemy)
     {
-        PoolManager.Instance.GetFromPool(prefab, enemy.transform.position, Quaternion.identity);
+        Instantiate(prefab, enemy.transform.position, Quaternion.identity);
     }
 }

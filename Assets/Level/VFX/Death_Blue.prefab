@@ -9618,7 +9618,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1973195983223046328}
   - component: {fileID: 1338906436}
-  - component: {fileID: 7155897229473355629}
   m_Layer: 0
   m_Name: Death_Blue
   m_TagString: Untagged
@@ -9667,18 +9666,6 @@ MonoBehaviour:
   trail: {fileID: 503167512142818041}
   range: 20
   speed: 10
---- !u!114 &7155897229473355629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1973195983223046331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2a54542859ea7a44a2bc1d32118f545, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1973195983383373140
 GameObject:
   m_ObjectHideFlags: 0
@@ -19378,19 +19365,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3451588294678588095, guid: 32977c33812693944a5367a42c878edb, type: 3}
   m_PrefabInstance: {fileID: 5033161169861562350}
   m_PrefabAsset: {fileID: 0}
---- !u!135 &1490352900
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 503167512142818041}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &7682267544070499391
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19407,3 +19381,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &1490352900
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503167512142818041}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.1
+  m_Center: {x: 0, y: 0, z: 0}

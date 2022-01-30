@@ -5,17 +5,22 @@ namespace Assets.MutantController.Scripts
 {
     public class MutantStrengthBar : MonoBehaviour
     {
-        public Slider slider;
+        public Image slider;
+        public Mutant mutant;
 
         public void SetMaxMutationStrength(float maxStrength)
         {
-                slider.value = maxStrength;
+            slider.fillAmount = maxStrength;
         }
 
         public void SetMutantStrength(float strength)
         {
-            slider.value = strength;
+            slider.fillAmount = strength;
         }
 
+        public void Update()
+        {
+            slider.fillAmount = mutant.CurrentMutantStrength / mutant.maxMutantStrength;
+        }
     }
 }

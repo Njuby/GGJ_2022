@@ -28,7 +28,6 @@ public class AudioCue : MonoBehaviour
 
     public void PlayAudioCue(Transform parent, Action onFinished = null)
     {
-        Debug.Log(parent);
         _audioCueEventChannel.RaiseEvent(this, parent.position, parent, onFinished);
     }
 
