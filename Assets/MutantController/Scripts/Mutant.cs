@@ -13,8 +13,8 @@ public class Mutant : MonoBehaviour
 
     public float TimeValue = 1f;
 
-    public float baseDecreaseStrengthBy = 10f;
-    public float DecreaseStrengthBy = 10f;
+    public float baseDecreaseStrengthBy = 1f;
+    public float DecreaseStrengthBy = 1f;
 
     public MutantStrengthBar mutationStrengthBar;
 
@@ -43,6 +43,7 @@ public class Mutant : MonoBehaviour
     {
         CurrentMutantStrength = 5;
         DecreaseStrengthBy = baseDecreaseStrengthBy;
+        MutantLevelChange.Raise((int)CurrentMutantStrength);
     }
 
     // Update is called once per frame
@@ -62,8 +63,7 @@ public class Mutant : MonoBehaviour
             }
             else
             {
-                    MutationModeActivated();
-
+                MutationModeActivated();
             }
 
         }
@@ -71,6 +71,8 @@ public class Mutant : MonoBehaviour
 
     private void MutationModeActivated()
     {
+        if (CurrentMutantStrength <= 0) return;
+
         isMutantMode = true;
         Debug.Log("Mutation Mode Activated");
         mutationStrengthBar.SetMutantStrength(CurrentMutantStrength);
@@ -91,6 +93,11 @@ public class Mutant : MonoBehaviour
             DecreaseMutantStrength(DecreaseStrengthBy);
             DecreaseStrengthBy++;
             TimeValue = 1f;
+
+            if (CurrentMutantStrength <= 0)
+            {
+                MutationModeDectivated();
+            }
         }
 
     }
