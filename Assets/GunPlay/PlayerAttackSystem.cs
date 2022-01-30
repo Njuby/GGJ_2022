@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerAttackSystem : MonoBehaviour
+public class PlayerAttackSystem : AudioCue
 {
     //[SerializeField, TableList, TabGroup("Spells", GroupID = "AttackSystem/")] private AttackAbility[] attackSpells;
 
@@ -77,7 +77,7 @@ public class PlayerAttackSystem : MonoBehaviour
         ignoreLayer = ~(1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer("Particles"));
         currentTarget = playerAim.AutoAim();
         isAttacking = false;
-
+        PlayAudioCue(transform);
         GameObject bullet = PoolManager.Instance.GetFromPool(playerAmmo.Prefab, ammoSpawn.transform.position, Quaternion.identity, null);
         AmmoMove ammoMove = bullet.GetComponent<AmmoMove>();
 

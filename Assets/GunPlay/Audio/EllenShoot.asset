@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e854ccd8588da4694c3ae040c10c5e, type: 3}
+  m_Name: EllenShoot
+  m_EditorClassIdentifier: 
+  looping: 0
+  waitTillClipIsFinished: 0
+  _audioClipGroups:
+  - sequenceMode: 1
+    audioClips:
+    - {fileID: 8300000, guid: f5d4b5ee2865e4e9b85ec4ab4da82c04, type: 3}
+    - {fileID: 8300000, guid: 401db7b243be8420d9b7cc6e4ccfd2c9, type: 3}
+    - {fileID: 8300000, guid: dae2a4f422ba74eb08cbef1dbd922884, type: 3}
+    - {fileID: 8300000, guid: c49b6198a3a2b4596bf93f0a37561793, type: 3}
+    - {fileID: 8300000, guid: 60c8890c93a77451c9ca33ec63e1bbf4, type: 3}
+    - {fileID: 8300000, guid: 84929eac1a0f541b79e2d2a104118522, type: 3}
+    - {fileID: 8300000, guid: 7575b748586d14b1e8b792be5304c1e3, type: 3}
+    - {fileID: 8300000, guid: 8daee948bba2d46d3b44b5bce81698e6, type: 3}
+    - {fileID: 8300000, guid: 3d6364aca818245b3b570a23b79ad226, type: 3}
+    - {fileID: 8300000, guid: d9add775350184a7ab41db9c258b7706, type: 3}

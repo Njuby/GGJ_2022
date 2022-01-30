@@ -134,6 +134,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 674224682, guid: 97525ad86ee1d2f4c83f4b4054198a36, type: 3}
+      propertyPath: _audioCue
+      value: 
+      objectReference: {fileID: 11400000, guid: 6f574b063a1f4f04faeaa98123ec9572, type: 2}
+    - target: {fileID: 674224682, guid: 97525ad86ee1d2f4c83f4b4054198a36, type: 3}
+      propertyPath: _audioConfiguration
+      value: 
+      objectReference: {fileID: 11400000, guid: 64482bebba4715c41862aae4ff0e729a, type: 2}
+    - target: {fileID: 674224682, guid: 97525ad86ee1d2f4c83f4b4054198a36, type: 3}
+      propertyPath: _audioCueEventChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: b7e9453b3df8b1040a4765d4907cd564, type: 2}
     - target: {fileID: 1516236507, guid: 97525ad86ee1d2f4c83f4b4054198a36, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -374,6 +386,88 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &719636472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 719636476}
+  - component: {fileID: 719636475}
+  - component: {fileID: 719636474}
+  - component: {fileID: 719636473}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &719636473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719636472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54f92f965dbe44449b252b814ddc7137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioCue: {fileID: 11400000, guid: a38a300c7ba11364fbbad9b0e21e9632, type: 2}
+  _playOnStart: 0
+  setParentManually: 0
+  _audioCueEventChannel: {fileID: 11400000, guid: fc073a7a2143b11409957ff0f29a0620, type: 2}
+  _audioConfiguration: {fileID: 11400000, guid: 5129f39f9a6fbea4a8301ce059996e5c, type: 2}
+--- !u!114 &719636474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719636472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54f92f965dbe44449b252b814ddc7137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioCue: {fileID: 11400000, guid: 4d7f52715ca4a7240a624bba4cbfd909, type: 2}
+  _playOnStart: 0
+  setParentManually: 0
+  _audioCueEventChannel: {fileID: 11400000, guid: fc073a7a2143b11409957ff0f29a0620, type: 2}
+  _audioConfiguration: {fileID: 11400000, guid: 5129f39f9a6fbea4a8301ce059996e5c, type: 2}
+--- !u!114 &719636475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719636472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a492d00d8c2bda49a40f97feaa7e15a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onMutantChanged: {fileID: 11400000, guid: 3d24be11baabdd34980fce9d80da6007, type: 2}
+  mutantMusic: {fileID: 719636474}
+  normalMusic: {fileID: 719636473}
+--- !u!4 &719636476
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719636472}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &856231034
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -570,6 +664,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6147012469555591898, guid: 02960606c9eba3d429f4e8baf68749be, type: 3}
+      propertyPath: OnMutantChanged
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d24be11baabdd34980fce9d80da6007, type: 2}
     - target: {fileID: 6147012469555591899, guid: 02960606c9eba3d429f4e8baf68749be, type: 3}
       propertyPath: m_Name
       value: '[EnvironmentManager]'
@@ -916,7 +1014,7 @@ MonoBehaviour:
   _factory: {fileID: 11400000, guid: 582a99311d36e7843a36d2c7135edd74, type: 2}
   _SFXEventChannel: {fileID: 11400000, guid: b7e9453b3df8b1040a4765d4907cd564, type: 2}
   _musicEventChannel: {fileID: 11400000, guid: fc073a7a2143b11409957ff0f29a0620, type: 2}
-  musicPlayed: {fileID: 0}
+  musicPlayed: {fileID: 11400000, guid: 4d357260c0bc4c7409ce043825c57bc1, type: 2}
   audioMixer: {fileID: 24100000, guid: 248799cb4acba48f7b3ee842a80f788c, type: 2}
   _masterVolume: 1
   _musicVolume: 1
