@@ -15,6 +15,7 @@ public class Enemy : Hittable
     public AudioCue attackCue;
     public AudioCue idleCue;
     public AudioCue aggroCue;
+    public GameObject deathPrefab;
 
     [Header("Detection")]
     public float detectionRange;
@@ -61,6 +62,8 @@ public class Enemy : Hittable
     [Button("Kill")]
     public override void Die()
     {
+        GameObject death = PoolManager.Instance.GetFromPool(deathPrefab, transform.position, Quaternion.identity);
+        death.transform.localScale = Vector3.one * 5;
         for (int i = transform.childCount - 1; i >= 0; i--)
         {
             if (transform.GetChild(i).GetComponent<IPoolObject>() != null)
@@ -160,7 +163,8 @@ public class Enemy : Hittable
     public override void TakeDamage(int amount)
     {
         base.TakeDamage(amount);
-        animator.Play("Hit");
+        int index = Random.Range(0, 4);
+        animator.Play($"Hit_{index}");
     }
 
     public void OnDrawGizmosSelected()

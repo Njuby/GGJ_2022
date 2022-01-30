@@ -3143,9 +3143,11 @@ MonoBehaviour:
   health: 100
   target: {fileID: 0}
   wanderTarget: {x: 0, y: 0, z: 0}
+  animator: {fileID: 6778092439765874719}
   attackCue: {fileID: -49707804602997308}
   idleCue: {fileID: 6979717324038996089}
   aggroCue: {fileID: 8838589389536762891}
+  deathPrefab: {fileID: 4676978750048741592, guid: 1d4f1aa2d771b704baf6e0b904eed340, type: 3}
   detectionRange: 50
   closeToPlayerRange: 5
   attackTimer: 5
