@@ -9,6 +9,9 @@ public class StompAbility : Ability
     public CharacterMovement player;
     public Animator anim;
     public IntEvent mutantStrengthEvent;
+    public BoolEvent mutantChangeEvent;
+
+    public IntEvent useAbilityEvent;
 
     public GameObject preview;
     public GameObject effect;
@@ -30,7 +33,7 @@ public class StompAbility : Ability
 
     public int mutantcy;
 
-    private bool jumping;
+    private bool active;
 
     public void OnEnable()
     {
@@ -38,6 +41,7 @@ public class StompAbility : Ability
         effect.SetActive(false);
 
         mutantStrengthEvent.Register((x) => mutantcy = x / 5);
+        mutantChangeEvent.Register((x) => active = x);
     }
 
     public override void Update()
@@ -47,7 +51,11 @@ public class StompAbility : Ability
 
     public override void DoAbility()
     {
+        if (!active) return;
+
         if (!player.IsGrounded()) return;
+
+        useAbilityEvent.Raise(5);
 
         base.DoAbility();
 
@@ -61,8 +69,6 @@ public class StompAbility : Ability
         preview.transform.localScale = Vector3.one * damageRadius * mutantcy;
         effect.transform.localScale = Vector3.one * damageRadius * mutantcy;
         preview.SetActive(true);
-
-        jumping = true;
     }
 
     public void Stomp()
@@ -79,8 +85,6 @@ public class StompAbility : Ability
         preview.SetActive(false);
 
         StartCoroutine(DoEffect(distanceList, colliders));
-
-        jumping = false;
     }
 
     public IEnumerator WaitForHitGround()
@@ -101,8 +105,6 @@ public class StompAbility : Ability
         preview.SetActive(false);
 
         StartCoroutine(DoEffect(distanceList, colliders));
-
-        jumping = false;
     }
 
     public IEnumerator DoEffect(List<float> distances, Collider[] colliders)
