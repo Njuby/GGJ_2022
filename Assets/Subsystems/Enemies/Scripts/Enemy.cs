@@ -8,10 +8,10 @@ using UnityEditor;
 
 public class Enemy : Hittable
 {
-    NavMeshAgent agent;
+    private NavMeshAgent agent;
     public GameObject target;
     public Vector3 wanderTarget;
-
+    public Animator animator;
     public AudioCue attackCue;
     public AudioCue idleCue;
     public AudioCue aggroCue;
@@ -89,7 +89,8 @@ public class Enemy : Hittable
         attackTimer += Time.deltaTime;
     }
 
-    bool prevInRange;
+    private bool prevInRange;
+
     public bool MoveToTarget()
     {
         if (target == null) return false;
@@ -110,7 +111,7 @@ public class Enemy : Hittable
 
         //if (RaycastTools.RayCastFromPos(transform.position + Vector3.up, direction, mask, out RaycastHit hit))
         //{
-        if(!prevInRange)
+        if (!prevInRange)
         {
             attackCue.PlayAudioCue(transform);
         }
@@ -136,7 +137,6 @@ public class Enemy : Hittable
             }
         }
 
-
         agent.SetDestination(wanderTarget);
 
         if (Vector3.Distance(wanderTarget, transform.position) < 1f)
@@ -155,6 +155,12 @@ public class Enemy : Hittable
     public void DoDamage()
     {
         if (target) target.Hit(attack.damage);
+    }
+
+    public override void TakeDamage(int amount)
+    {
+        base.TakeDamage(amount);
+        animator.Play("Hit");
     }
 
     public void OnDrawGizmosSelected()
