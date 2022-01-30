@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e854ccd8588da4694c3ae040c10c5e, type: 3}
+  m_Name: EnemyIdle
+  m_EditorClassIdentifier: 
+  looping: 0
+  waitTillClipIsFinished: 0
+  _audioClipGroups:
+  - sequenceMode: 1
+    audioClips:
+    - {fileID: 8300000, guid: 823b8fbee86b74fa3b574b80d64a8082, type: 3}
+    - {fileID: 8300000, guid: f642992729f22436393d0e273086c451, type: 3}
+    - {fileID: 8300000, guid: 89a46775cccb3436dbb6c56af49d8aa0, type: 3}
+    - {fileID: 8300000, guid: f0d4346d9202b46cead7bb23493006ee, type: 3}

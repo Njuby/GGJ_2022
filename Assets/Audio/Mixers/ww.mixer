@@ -1,18 +1,46 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!244 &-8108475804502028043
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 3cd54066193d2244e96a408d5c1e1b5d
+  m_EffectName: Send
+  m_MixLevel: 8d27fb6a2a8da34488b23aef9f73d213
+  m_Parameters: []
+  m_SendTarget: {fileID: -2901244253254398314}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &-2901244253254398314
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 306b798de64d52b4981eb5a48435a2e0
+  m_EffectName: Receive
+  m_MixLevel: eb1402d4f2976eb4bad94077abb8e571
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ResonanceAudioMixer
+  m_Name: ww
   m_OutputGroup: {fileID: 0}
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
   - {fileID: 24500006}
   m_StartSnapshot: {fileID: 24500006}
-  m_SuspendThreshold: -80
+  m_SuspendThreshold: -40
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
@@ -48,6 +76,7 @@ AudioMixerGroupController:
   m_Pitch: f6e7ed6a2ec9849df837cb64b6ec8240
   m_Send: 00000000000000000000000000000000
   m_Effects:
+  - {fileID: -2901244253254398314}
   - {fileID: 24400004}
   m_UserColorIndex: 0
   m_Mute: 0
@@ -87,10 +116,12 @@ AudioMixerSnapshotController:
     98fb01179e86447159dcaa96ee1a046f: -46.5
     13898287f06a44455ae82381ea0c256d: 16.6
     f7cdf9988c90d467ba0ce9f45ceab639: 1.35
-    76dd6ada92654467da2044ca5eb97484: -1.5838235e-11
+    8d27fb6a2a8da34488b23aef9f73d213: 0
+    76dd6ada92654467da2044ca5eb97484: 20
     571e092bf98874d3c900119c9ee11543: 0.506
     25643dcb371c34467be55a19f88ae161: -58.09995
     482ea26d712ab4d9ba8b083a4f6c53ee: -5.3230715
+    e16b039dc30d34426aabc63b86e8164a: 20
     f62f6dbdc5fee4fae9a209339cd6a21d: -44.600006
     e4ed760f751e74f86a369f0855e903b4: 1.6
     4307064f097d142f98b7d4820eb3fb60: 0.1
@@ -131,6 +162,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 244399372933312648}
+  - {fileID: -8108475804502028043}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0

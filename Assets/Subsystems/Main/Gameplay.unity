@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5423523, g: 0.2907409, b: 0.5666254, a: 1}
+  m_IndirectSpecularColor: {r: 0.67570966, g: 0.11755642, b: 0.35090092, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -391,11 +391,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2689666023831845141, guid: 7be711239d057a8478110674c35bb53d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2689666023831845143, guid: 7be711239d057a8478110674c35bb53d, type: 3}
       propertyPath: radius
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689666023831845143, guid: 7be711239d057a8478110674c35bb53d, type: 3}
+      propertyPath: spawnLimit
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2689666023831845143, guid: 7be711239d057a8478110674c35bb53d, type: 3}
       propertyPath: fillSpawner
@@ -403,11 +407,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2689666024537068089, guid: 7be711239d057a8478110674c35bb53d, type: 3}
       propertyPath: spawnLimit
-      value: 1000
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2689666024537068089, guid: 7be711239d057a8478110674c35bb53d, type: 3}
       propertyPath: fillSpawner
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689666024537068091, guid: 7be711239d057a8478110674c35bb53d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689666024584212268, guid: 7be711239d057a8478110674c35bb53d, type: 3}
+      propertyPath: spawnLimit
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2689666024584212268, guid: 7be711239d057a8478110674c35bb53d, type: 3}
       propertyPath: fillSpawner
@@ -415,7 +427,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2689666024584212270, guid: 7be711239d057a8478110674c35bb53d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689666024600624812, guid: 7be711239d057a8478110674c35bb53d, type: 3}
+      propertyPath: spawnLimit
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2689666024600624812, guid: 7be711239d057a8478110674c35bb53d, type: 3}
       propertyPath: fillSpawner
@@ -423,15 +439,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2689666024600624814, guid: 7be711239d057a8478110674c35bb53d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2689666025106287132, guid: 7be711239d057a8478110674c35bb53d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689666025106287134, guid: 7be711239d057a8478110674c35bb53d, type: 3}
+      propertyPath: spawnLimit
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2689666025106287134, guid: 7be711239d057a8478110674c35bb53d, type: 3}
       propertyPath: fillSpawner
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689666025193109924, guid: 7be711239d057a8478110674c35bb53d, type: 3}
+      propertyPath: spawnLimit
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2689666025193109924, guid: 7be711239d057a8478110674c35bb53d, type: 3}
       propertyPath: fillSpawner
@@ -439,11 +463,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2689666025193109926, guid: 7be711239d057a8478110674c35bb53d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2689666025784225185, guid: 7be711239d057a8478110674c35bb53d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689666025784225187, guid: 7be711239d057a8478110674c35bb53d, type: 3}
+      propertyPath: spawnLimit
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2689666025784225187, guid: 7be711239d057a8478110674c35bb53d, type: 3}
       propertyPath: fillSpawner
@@ -814,4 +842,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1614553394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1614553396}
+  - component: {fileID: 1614553395}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1614553395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614553394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dcf69f82f8783049ab749ba8f527f89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _factory: {fileID: 11400000, guid: 582a99311d36e7843a36d2c7135edd74, type: 2}
+  _SFXEventChannel: {fileID: 11400000, guid: b7e9453b3df8b1040a4765d4907cd564, type: 2}
+  _musicEventChannel: {fileID: 11400000, guid: fc073a7a2143b11409957ff0f29a0620, type: 2}
+  musicPlayed: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 248799cb4acba48f7b3ee842a80f788c, type: 2}
+  _masterVolume: 1
+  _musicVolume: 1
+  _sfxVolume: 1
+--- !u!4 &1614553396
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614553394}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

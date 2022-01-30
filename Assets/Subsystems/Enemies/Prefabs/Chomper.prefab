@@ -3082,6 +3082,9 @@ GameObject:
   - component: {fileID: 6778092439775218651}
   - component: {fileID: 6778092439775218652}
   - component: {fileID: -2086598432411678314}
+  - component: {fileID: -49707804602997308}
+  - component: {fileID: 6979717324038996089}
+  - component: {fileID: 8838589389536762891}
   m_Layer: 8
   m_Name: Chomper
   m_TagString: Untagged
@@ -3140,6 +3143,9 @@ MonoBehaviour:
   health: 100
   target: {fileID: 0}
   wanderTarget: {x: 0, y: 0, z: 0}
+  attackCue: {fileID: -49707804602997308}
+  idleCue: {fileID: 6979717324038996089}
+  aggroCue: {fileID: 8838589389536762891}
   detectionRange: 50
   closeToPlayerRange: 5
   attackTimer: 5
@@ -3199,6 +3205,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 105378c4b1a0fb444a133997acadce79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-49707804602997308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6778092439775218653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54f92f965dbe44449b252b814ddc7137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioCue: {fileID: 11400000, guid: 18a36616a7df66346a0d3ad88086dceb, type: 2}
+  _playOnStart: 0
+  setParentManually: 0
+  parent: {fileID: 6778092439775713277}
+  _audioCueEventChannel: {fileID: 11400000, guid: b7e9453b3df8b1040a4765d4907cd564, type: 2}
+  _audioConfiguration: {fileID: 11400000, guid: 657c7bd2b450b4141a0329376e6807cf, type: 2}
+--- !u!114 &6979717324038996089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6778092439775218653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54f92f965dbe44449b252b814ddc7137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioCue: {fileID: 11400000, guid: fddb5b764b88b094193f0ae19cf0964d, type: 2}
+  _playOnStart: 0
+  setParentManually: 0
+  parent: {fileID: 6778092439775713277}
+  _audioCueEventChannel: {fileID: 11400000, guid: b7e9453b3df8b1040a4765d4907cd564, type: 2}
+  _audioConfiguration: {fileID: 11400000, guid: 657c7bd2b450b4141a0329376e6807cf, type: 2}
+--- !u!114 &8838589389536762891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6778092439775218653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54f92f965dbe44449b252b814ddc7137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioCue: {fileID: 11400000, guid: a4fb3ab7dbe0bad428ad2a5348f3f28c, type: 2}
+  _playOnStart: 0
+  setParentManually: 0
+  parent: {fileID: 0}
+  _audioCueEventChannel: {fileID: 11400000, guid: b7e9453b3df8b1040a4765d4907cd564, type: 2}
+  _audioConfiguration: {fileID: 11400000, guid: 657c7bd2b450b4141a0329376e6807cf, type: 2}
 --- !u!1 &6778092439775218655
 GameObject:
   m_ObjectHideFlags: 0

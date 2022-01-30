@@ -4,12 +4,17 @@ using UnityEngine.AI;
 using Sirenix.OdinInspector;
 using System.Collections;
 using DG.Tweening;
+using UnityEditor;
 
 public class Enemy : Hittable
 {
     NavMeshAgent agent;
     public GameObject target;
     public Vector3 wanderTarget;
+
+    public AudioCue attackCue;
+    public AudioCue idleCue;
+    public AudioCue aggroCue;
 
     [Header("Detection")]
     public float detectionRange;
@@ -84,6 +89,7 @@ public class Enemy : Hittable
         attackTimer += Time.deltaTime;
     }
 
+    bool prevInRange;
     public bool MoveToTarget()
     {
         if (target == null) return false;
@@ -104,7 +110,13 @@ public class Enemy : Hittable
 
         //if (RaycastTools.RayCastFromPos(transform.position + Vector3.up, direction, mask, out RaycastHit hit))
         //{
+        if(!prevInRange)
+        {
+            attackCue.PlayAudioCue(transform);
+        }
+
         agent.SetDestination(target.transform.position - direction.normalized * closeToPlayerRange);
+        prevInRange = distance < detectionRange;
         return true;
         //  }
     }
@@ -120,13 +132,14 @@ public class Enemy : Hittable
             if (RaycastTools.RayCastFromPos(wanderTarget + Vector3.up * 20, Vector3.down, mask, out RaycastHit hit))
             {
                 wanderTarget = hit.point;
+                idleCue.PlayAudioCue(transform);
             }
         }
 
 
         agent.SetDestination(wanderTarget);
 
-        if (Vector3.Distance(wanderTarget, transform.position) < 0.1f)
+        if (Vector3.Distance(wanderTarget, transform.position) < 1f)
         {
             idleTime = 0;
             wanderTarget = Vector3.zero;
@@ -136,6 +149,7 @@ public class Enemy : Hittable
     public void Attack()
     {
         attack.PlayAttack(gameObject);
+        attackCue.PlayAudioCue(transform);
     }
 
     public void DoDamage()

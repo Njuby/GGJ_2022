@@ -1,0 +1,14 @@
+﻿using UnityEngine;
+using System.Linq;
+
+[CreateAssetMenu(fileName = "NewSoundEmitterPool", menuName = "Pool/SoundEmitter Pool")]
+public class SoundEmitterPoolSO : FactorySO<SoundEmitter>
+{
+    [SerializeField]
+    private SoundEmitterFactorySO _factory;
+
+    public override SoundEmitter Create(Vector3 pos, Transform parent)
+    {
+        throw new System.NotImplementedException();
+    }
+}
