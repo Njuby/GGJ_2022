@@ -80,7 +80,7 @@ PluginImporter:
       enabled: 1
       settings: {}
   - first:
-      Standalone: Win64
+      Standalone: Win
     second:
       enabled: 1
       settings: {}

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5423523, g: 0.2907409, b: 0.5666254, a: 1}
+  m_IndirectSpecularColor: {r: 0.5423508, g: 0.2907398, b: 0.5666248, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -130,34 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 460963687, guid: 97525ad86ee1d2f4c83f4b4054198a36, type: 3}
-      propertyPath: useAbilityEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: 640304bec6e80634f9299bf2392f7db9, type: 2}
-    - target: {fileID: 1384832855, guid: 97525ad86ee1d2f4c83f4b4054198a36, type: 3}
-      propertyPath: TimeValue
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1384832855, guid: 97525ad86ee1d2f4c83f4b4054198a36, type: 3}
-      propertyPath: damageTimer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1384832855, guid: 97525ad86ee1d2f4c83f4b4054198a36, type: 3}
-      propertyPath: useAbilityEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: 640304bec6e80634f9299bf2392f7db9, type: 2}
-    - target: {fileID: 1384832855, guid: 97525ad86ee1d2f4c83f4b4054198a36, type: 3}
-      propertyPath: DecreaseStrengthBy
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1384832855, guid: 97525ad86ee1d2f4c83f4b4054198a36, type: 3}
-      propertyPath: baseDecreaseStrengthBy
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2206046204745763345, guid: 97525ad86ee1d2f4c83f4b4054198a36, type: 3}
-      propertyPath: MutantSwitch
-      value: 
-      objectReference: {fileID: 11400000, guid: 1784321b5eb15a540a3f0d6607171917, type: 2}
     - target: {fileID: 3862113733200726902, guid: 97525ad86ee1d2f4c83f4b4054198a36, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -206,10 +178,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerFull
       objectReference: {fileID: 0}
-    - target: {fileID: 4940902526876796517, guid: 97525ad86ee1d2f4c83f4b4054198a36, type: 3}
-      propertyPath: useAbilityEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: 640304bec6e80634f9299bf2392f7db9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97525ad86ee1d2f4c83f4b4054198a36, type: 3}
 --- !u!1 &108381664
