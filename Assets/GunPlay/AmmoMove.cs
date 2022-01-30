@@ -6,14 +6,15 @@ public class AmmoMove : MonoBehaviour, IPoolObject
     [SerializeField] private Rigidbody rb;
     public int PoolKey { get; set; }
     public ObjectInstance ObjInstance { get; set; }
-
+    private int damage;
     private Vector3 targetPos;
     private Vector3 direction;
     private Vector3 velocity;
 
-    public void Setup(Transform target, Transform camTrans, float speed)
+    public void Setup(Transform target, Transform camTrans, float speed, int damage)
     {
         Vector3 offset = Vector3.up;
+        this.damage = damage;
         targetPos = target != null ? target.position : transform.position + (camTrans.transform.forward * 30) + offset;
         direction = (targetPos - transform.position).normalized;
         transform.LookAt(targetPos);
@@ -39,6 +40,11 @@ public class AmmoMove : MonoBehaviour, IPoolObject
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision != null)
+        {
+            collision.gameObject.Hit(damage);
+        }
+
         PoolManager.Instance.ReturnToPool(gameObject);
     }
 

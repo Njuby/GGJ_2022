@@ -72,7 +72,7 @@ public class PlayerAttackSystem : MonoBehaviour
         GameObject bullet = PoolManager.Instance.GetFromPool(playerAmmo.Prefab, ammoSpawn.transform.position, Quaternion.identity, null);
         AmmoMove ammoMove = bullet.GetComponent<AmmoMove>();
 
-        ammoMove.Setup(currentTarget, mainCam.transform, playerAmmo.Speed);
+        ammoMove.Setup(currentTarget, mainCam.transform, playerAmmo.Speed, playerAmmo.Damage);
         //aimAnimator.SetBool("TargetLocked", currentTarget);
         //for (int i = 0; i < attackSpells.Length; i++)
         //{
