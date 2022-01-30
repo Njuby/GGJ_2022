@@ -6,7 +6,7 @@ using UnityEngine;
 public class StompAbility : Ability
 {
     public CharacterMovement player;
-
+    public Animator playerAnim;
     public GameObject preview;
     public GameObject effect;
     public GameObject spikeCluster;
@@ -24,7 +24,6 @@ public class StompAbility : Ability
 
     public void OnEnable()
     {
-        player = GetComponentInChildren<CharacterMovement>();
 
         preview.transform.localScale = Vector3.one * damageRadius;
         effect.transform.localScale = Vector3.one * damageRadius;
@@ -49,11 +48,11 @@ public class StompAbility : Ability
     {
         base.DoAbility();
 
-        player.Jump();
+        player.Jump(false);
 
         preview.SetActive(true);
 
-        StartCoroutine(WaitForHitGround());
+        //StartCoroutine(WaitForHitGround());
 
         jumping = true;
     }
@@ -63,6 +62,13 @@ public class StompAbility : Ability
         yield return new WaitForSeconds(0.2f);
         yield return new WaitUntil(() => player.IsGrounded());
 
+        //StartCoroutine(DoEffect(distanceList, colliders));
+    }
+
+    public void Stomp()
+    {
+        Debug.Log("I AM CALLED");
+        playerAnim.SetBool("isAttacking", false);
         List<float> distanceList = new List<float>();
 
         var colliders = Physics.OverlapSphere(transform.position, damageRadius, enemyMask);
@@ -123,7 +129,6 @@ public class StompAbility : Ability
         }
 
         effect.SetActive(false);
-
     }
 
     public void OnDrawGizmos()

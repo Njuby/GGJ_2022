@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -15,6 +16,7 @@ public class MutantForm : MonoBehaviour
     [SerializeField] private VisualEffect gunEffect;
     [SerializeField] private VisualEffect transformEffect;
     [SerializeField] private VisualEffect detransformEffect;
+    [SerializeField] private BoolVariable mutantActivated;
     private Sequence detrans;
     private Sequence trans;
 
@@ -28,6 +30,7 @@ public class MutantForm : MonoBehaviour
 
     private void Mutant_OnMutationModeDectivated()
     {
+        mutantActivated.Value = false;
         detransformEffect.enabled = true;
         transformEffect.enabled = false;
         detransformEffect.Play();
@@ -45,6 +48,7 @@ public class MutantForm : MonoBehaviour
 
     private void Mutant_OnMutationModeActivated()
     {
+        mutantActivated.Value = true;
         transformEffect.enabled = true;
         detransformEffect.enabled = false;
         gunEffect.enabled = true;
