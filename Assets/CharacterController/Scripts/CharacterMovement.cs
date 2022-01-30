@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
+    public PlayerAttackSystem attackSystem;
+
     public float RaycastLength = 1.6f;
     public float rayWidth = 0.25f;
     public float floorOffsetY;
@@ -18,6 +20,7 @@ public class CharacterMovement : MonoBehaviour
     private float vertical;
     private float horizontal;
     private Vector3 moveDirection;
+    private Vector3 moveDirectionForwarded;
     private float inputAmount;
     private Vector3 raycastFloorPos;
     private Vector3 floorMovement;
@@ -49,11 +52,12 @@ public class CharacterMovement : MonoBehaviour
         Vector3 correctedHorizontal = horizontal * Vector3.right;// * transform.right; /** Camera.main.transform.right;*/
 
         Vector3 combinedInput = correctedHorizontal + correctedVertical;
+        Vector3 combinedInputForwarded = (vertical * rb.transform.forward) + (horizontal * rb.transform.right);
         // normalize so diagonal movement isnt twice as fast, clear the Y so your character doesnt try to
         // walk into the floor/ sky when your camera isn't level
 
         moveDirection = new Vector3((combinedInput).normalized.x, 0, (combinedInput).normalized.z);
-
+        moveDirectionForwarded = new Vector3((combinedInputForwarded).normalized.x, 0, (combinedInputForwarded).normalized.z);
         // make sure the input doesnt go negative or above 1;
         float inputMagnitude = Mathf.Abs(horizontal) + Mathf.Abs(vertical);
         inputAmount = Mathf.Clamp01(inputMagnitude);
@@ -62,12 +66,18 @@ public class CharacterMovement : MonoBehaviour
         //Quaternion rot = Quaternion.LookRotation(moveDirection);
         //Quaternion targetRotation = Quaternion.Slerp(transform.rotation, rot, Time.fixedDeltaTime * inputAmount * rotateSpeed);
         //transform.rotation = targetRotation;
-
-        float targetRot = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg +
-                               cam.transform.eulerAngles.y;
-        rb.transform.eulerAngles = Vector3.up *
-            Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRot, ref turnSmoothVelocity, 0.1f);
-
+        if (!attackSystem.IsAiming)
+        {
+            float targetRot = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg +
+                                   cam.transform.eulerAngles.y;
+            rb.transform.eulerAngles = Vector3.up *
+                Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRot, ref turnSmoothVelocity, 0.1f);
+        }
+        else
+        {
+            rb.transform.eulerAngles = Vector3.up *
+        Mathf.SmoothDampAngle(transform.eulerAngles.y, cam.transform.eulerAngles.y, ref turnSmoothVelocity, 0.1f);
+        }
         if (jump_input_down)
         {
             Jump();
@@ -98,7 +108,14 @@ public class CharacterMovement : MonoBehaviour
         }
 
         // actual movement of the rigidbody + extra down force
-        rb.velocity = (rb.transform.forward * moveDirection.magnitude * GetMoveSpeed(moveSpeed) * inputAmount) + gravity;
+        if (!attackSystem.IsAiming)
+        {
+            rb.velocity = (rb.transform.forward * moveDirection.magnitude * GetMoveSpeed(moveSpeed) * inputAmount) + gravity;
+        }
+        else
+        {
+            rb.velocity = (moveDirectionForwarded * GetMoveSpeed(moveSpeed) * inputAmount) + gravity;
+        }
 
         // find the Y position via raycasts
         floorMovement = new Vector3(rb.position.x, FindFloor().y + floorOffsetY, rb.position.z);

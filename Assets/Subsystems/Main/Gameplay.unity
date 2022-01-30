@@ -186,18 +186,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerFull
       objectReference: {fileID: 0}
-    - target: {fileID: 4530317294687251945, guid: 97525ad86ee1d2f4c83f4b4054198a36, type: 3}
-      propertyPath: groundLayer.m_Bits
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5136883862278219902, guid: 97525ad86ee1d2f4c83f4b4054198a36, type: 3}
-      propertyPath: maxTargetDistance
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 5136883862278219902, guid: 97525ad86ee1d2f4c83f4b4054198a36, type: 3}
-      propertyPath: targetLayerMask.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97525ad86ee1d2f4c83f4b4054198a36, type: 3}
 --- !u!1 &108381664
