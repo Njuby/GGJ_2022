@@ -6,18 +6,20 @@ using DG.Tweening;
 public class ParticleToPlayer : MonoBehaviour
 {
     public GameObject player;
-    public Vector3 offSet = new Vector3(0f,3f,0f);
+    public Vector3 offSet = new Vector3(0f, 3f, 0f);
 
     public ParticleSystem[] flame;
     public GameObject trail;
 
     public float range;
     public float speed = 5f;
+    private bool tweenActivated;
+    private bool isActive = false;
 
-    bool isActive = false;
-    void Awake()
+    private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        tweenActivated = false;
     }
 
     private void Update()
@@ -35,10 +37,13 @@ public class ParticleToPlayer : MonoBehaviour
         if (isActive)
         {
             trail.GetComponent<ParticleSystem>().Play();
-            trail.transform.DOMove(player.transform.position+offSet, speed);
+            if (!tweenActivated)
+            {
+                tweenActivated = true;
+                trail.transform.DOMove(player.transform.position + offSet, speed);
+            }
         }
     }
-
 
     //Cope this in player script
 
@@ -51,5 +56,4 @@ public class ParticleToPlayer : MonoBehaviour
     //        Destroy(other.transform.parent);
     //    }
     //}
-
 }
