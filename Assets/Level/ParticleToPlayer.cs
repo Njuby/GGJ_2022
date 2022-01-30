@@ -37,11 +37,9 @@ public class ParticleToPlayer : MonoBehaviour
         if (isActive)
         {
             trail.GetComponent<ParticleSystem>().Play();
-            if (!tweenActivated)
-            {
-                tweenActivated = true;
-                trail.transform.DOMove(player.transform.position + offSet, speed);
-            }
+
+            trail.transform.position = Vector3.Lerp(trail.transform.position, player.transform.position + offSet, speed * Time.deltaTime);
+
         }
     }
 
