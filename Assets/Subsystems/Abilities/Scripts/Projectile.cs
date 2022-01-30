@@ -54,7 +54,7 @@ public class Projectile : MonoBehaviour, IPoolObject
         if (stopped) return;
 
         time += Time.deltaTime;
-        if (time > DieOutTime * strength)
+        if (time > DieOutTime)
         {
             PoolManager.Instance.ReturnToPool(gameObject);
             return;
@@ -69,10 +69,10 @@ public class Projectile : MonoBehaviour, IPoolObject
         transform.position += Vector3.down * (gravity / strength) * Time.deltaTime;
 
         var collider = Physics.OverlapSphere(transform.position, autoLockToDistance * strength, mask);
-        collider.OrderBy((x) => Vector3.Distance(x.transform.position, transform.position));
+        var colliders = collider.OrderBy((x) => Vector3.Distance(x.transform.position, transform.position));
 
-        if (collider.Length != 0)
-            GoTowards = collider[0].transform.position + Vector3.up * 0.5f;
+        if (colliders.Count() != 0)
+            GoTowards = colliders.FirstOrDefault().transform.position + Vector3.up * 0.5f;
         else GoTowards = Vector3.zero;
     }
 
@@ -81,7 +81,7 @@ public class Projectile : MonoBehaviour, IPoolObject
         if (stopped) return;
 
         if (collision.transform.CompareTag("Player")) return;
-        collision.gameObject.Hit(baseDamage * strength);
+        collision.gameObject.Hit(baseDamage);
         transform.SetParent(collision.transform);
         if (gameObject.activeInHierarchy) StartCoroutine(WaitForDespawn());
         else PoolManager.Instance.ReturnToPool(gameObject);
@@ -90,7 +90,7 @@ public class Projectile : MonoBehaviour, IPoolObject
 
     public IEnumerator WaitForDespawn()
     {
-        yield return new WaitForSeconds(DespawnTime * strength);
+        yield return new WaitForSeconds(DespawnTime);
         if (!gameObject.activeInHierarchy)
         {
             PoolManager.Instance.ReturnToPool(gameObject);

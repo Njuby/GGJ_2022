@@ -30,6 +30,8 @@ public class Mutant : MonoBehaviour
     [SerializeField]
     private bool isMutantMode = false;
 
+    public int increaseOnCOllect;
+
     private Rigidbody rb;
 
     private void Awake()
@@ -92,19 +94,28 @@ public class Mutant : MonoBehaviour
         }
 
     }
-    private void IncreaseMutantStrength(float strength)
+    public void IncreaseMutantStrength(float strength)
     {
         CurrentMutantStrength += strength;
         MutantLevelChange.Raise((int)CurrentMutantStrength);
         mutationStrengthBar.SetMutantStrength(CurrentMutantStrength);
-        
     }
 
-    private void DecreaseMutantStrength(float strength)
+    public void DecreaseMutantStrength(float strength)
     {
         CurrentMutantStrength -= strength;
         MutantLevelChange.Raise((int)CurrentMutantStrength);
         mutationStrengthBar.SetMutantStrength(CurrentMutantStrength);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Mutancy"))
+        {
+            //Increase matancy of player
+            PoolManager.Instance.ReturnToPool(other.gameObject);
+            IncreaseMutantStrength(increaseOnCOllect);
+        }
+    }
 }
+

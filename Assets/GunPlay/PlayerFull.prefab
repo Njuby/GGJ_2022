@@ -1272,7 +1272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 812354828187883191, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
       propertyPath: groundLayer.m_Bits
-      value: 64
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 941237683293610156, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
       propertyPath: m_Height
@@ -1418,9 +1418,27 @@ PrefabInstance:
       propertyPath: aimObject
       value: 
       objectReference: {fileID: 3862113732930293714}
+    - target: {fileID: 8273424030255911712, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+      propertyPath: maxTargetDistance
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8273424030255911712, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+      propertyPath: targetLayerMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2920814120113847456, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+--- !u!4 &6723290683521420247 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7553968944427495561, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+  m_PrefabInstance: {fileID: 3862113732302879582}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6723290683521324983 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7553968944427134185, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+  m_PrefabInstance: {fileID: 3862113732302879582}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4077738250599357425 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 941237683293610159, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
@@ -1436,14 +1454,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8439539702810947956, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
   m_PrefabInstance: {fileID: 3862113732302879582}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &6046735210174686497 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7382150037727157887, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
-  m_PrefabInstance: {fileID: 3862113732302879582}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1760269360479369937 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3311623822409613711, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+  m_PrefabInstance: {fileID: 3862113732302879582}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6046735210174686497 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7382150037727157887, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
   m_PrefabInstance: {fileID: 3862113732302879582}
   m_PrefabAsset: {fileID: 0}
 --- !u!23 &2299345890230186861 stripped
@@ -1464,16 +1482,6 @@ SkinnedMeshRenderer:
 --- !u!95 &6723290683511809425 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7553968944419708623, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
-  m_PrefabInstance: {fileID: 3862113732302879582}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &6723290683521420247 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7553968944427495561, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
-  m_PrefabInstance: {fileID: 3862113732302879582}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6723290683521324983 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7553968944427134185, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
   m_PrefabInstance: {fileID: 3862113732302879582}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &4530317294687251945 stripped
@@ -1501,12 +1509,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MutantLevelChange: {fileID: 11400000, guid: 67fcef5428949644da7d4d3371547be4, type: 2}
   TimeValue: 1
+  baseDecreaseStrengthBy: 10
   DecreaseStrengthBy: 10
   mutationStrengthBar: {fileID: 1384832857}
   maxMutantStrength: 50
   CurrentMutantStrength: 0
   mutantLevel: 4
   isMutantMode: 0
+  increaseOnCOllect: 0
 --- !u!114 &1384832857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1556,6 +1566,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnDash: {fileID: 11400000, guid: 8bc128b8f82f68849a853d6330413f58, type: 2}
   dashVFX: {fileID: 1490204482}
+--- !u!65 &145257898
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760269360479369937}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &460963687
 MonoBehaviour:
   m_ObjectHideFlags: 0

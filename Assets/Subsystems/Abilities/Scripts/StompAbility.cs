@@ -43,33 +43,31 @@ public class StompAbility : Ability
     public override void Update()
     {
         base.Update();
-        if (jumping)
-        {
-            if (RaycastTools.RayCastFromPos(transform.position + Vector3.up * 5, Vector3.down, groundMask, out RaycastHit hit))
-            {
-                preview.transform.position = hit.point;
-                effect.transform.position = hit.point;
-            }
-        }
     }
 
     public override void DoAbility()
     {
+        if (!player.IsGrounded()) return;
+
         base.DoAbility();
 
         player.Jump(false);
 
+        if (RaycastTools.RayCastFromPos(transform.position + Vector3.up * 5, Vector3.down, groundMask, out RaycastHit hit))
+        {
+            preview.transform.position = hit.point;
+            effect.transform.position = hit.point;
+        }
+        preview.transform.localScale = Vector3.one * damageRadius * mutantcy;
+        effect.transform.localScale = Vector3.one * damageRadius * mutantcy;
         preview.SetActive(true);
-
-        //StartCoroutine(WaitForHitGround());
 
         jumping = true;
     }
 
     public void Stomp()
     {
-        preview.transform.localScale = Vector3.one * damageRadius * mutantcy;
-        effect.transform.localScale = Vector3.one * damageRadius * mutantcy;
+        
         anim.SetBool("isAttacking", false);
         List<float> distanceList = new List<float>();
 

@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1973195981816944174}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5853471, y: 0.5853471, z: 0.5853471}
+  m_LocalScale: {x: 2.8079963, y: 2.8079963, z: 2.8079963}
   m_Children: []
   m_Father: {fileID: 1973195983223046328}
   m_RootOrder: 0
@@ -4831,7 +4831,7 @@ Transform:
   m_GameObject: {fileID: 1973195982801379877}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5853471, y: 0.5853471, z: 0.5853471}
+  m_LocalScale: {x: 2.8079963, y: 2.8079963, z: 2.8079963}
   m_Children: []
   m_Father: {fileID: 1973195983223046328}
   m_RootOrder: 2
@@ -9618,6 +9618,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1973195983223046328}
   - component: {fileID: 1338906436}
+  - component: {fileID: 7155897229473355629}
   m_Layer: 0
   m_Name: Death_Blue
   m_TagString: Untagged
@@ -9664,8 +9665,20 @@ MonoBehaviour:
   - {fileID: 1973195982801379880}
   - {fileID: 1973195983383373147}
   trail: {fileID: 503167512142818041}
-  range: 5
-  speed: 2
+  range: 20
+  speed: 10
+--- !u!114 &7155897229473355629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973195983223046331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2a54542859ea7a44a2bc1d32118f545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1973195983383373140
 GameObject:
   m_ObjectHideFlags: 0
@@ -9693,7 +9706,7 @@ Transform:
   m_GameObject: {fileID: 1973195983383373140}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.1, z: -0}
-  m_LocalScale: {x: 0.6042538, y: 0.6042538, z: 0.6042538}
+  m_LocalScale: {x: 2.8986945, y: 2.8986945, z: 2.8986945}
   m_Children: []
   m_Father: {fileID: 1973195983223046328}
   m_RootOrder: 3
@@ -14497,7 +14510,7 @@ Transform:
   m_GameObject: {fileID: 1973195983740903707}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5853471, y: 0.5853471, z: 0.5853471}
+  m_LocalScale: {x: 2.8079963, y: 2.8079963, z: 2.8079963}
   m_Children: []
   m_Father: {fileID: 1973195983223046328}
   m_RootOrder: 1
@@ -19290,6 +19303,18 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3451588294678588095, guid: 32977c33812693944a5367a42c878edb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 12.0422
+      objectReference: {fileID: 0}
+    - target: {fileID: 3451588294678588095, guid: 32977c33812693944a5367a42c878edb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 12.0422
+      objectReference: {fileID: 0}
+    - target: {fileID: 3451588294678588095, guid: 32977c33812693944a5367a42c878edb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 12.0422
+      objectReference: {fileID: 0}
+    - target: {fileID: 3451588294678588095, guid: 32977c33812693944a5367a42c878edb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -19334,6 +19359,10 @@ PrefabInstance:
       value: ToCaracterEffect_Blue
       objectReference: {fileID: 0}
     - target: {fileID: 4837707424643769623, guid: 32977c33812693944a5367a42c878edb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4837707424643769623, guid: 32977c33812693944a5367a42c878edb, type: 3}
       propertyPath: m_TagString
       value: Mutancy
       objectReference: {fileID: 0}
@@ -19362,3 +19391,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &7682267544070499391
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503167512142818041}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
