@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973195981816944174}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.3399999, z: 0}
   m_LocalScale: {x: 2.8079963, y: 2.8079963, z: 2.8079963}
   m_Children: []
   m_Father: {fileID: 1973195983223046328}
@@ -4830,7 +4830,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973195982801379877}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.3399999, z: 0}
   m_LocalScale: {x: 2.8079963, y: 2.8079963, z: 2.8079963}
   m_Children: []
   m_Father: {fileID: 1973195983223046328}
@@ -9657,15 +9657,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  offSet: {x: 0, y: 3, z: 0}
+  offSet: {x: 0, y: 6, z: 0}
   flame:
   - {fileID: 1973195981816944172}
   - {fileID: 1973195983740903710}
   - {fileID: 1973195982801379880}
   - {fileID: 1973195983383373147}
   trail: {fileID: 503167512142818041}
-  range: 20
-  speed: 10
+  range: 50
+  speed: 2
 --- !u!1 &1973195983383373140
 GameObject:
   m_ObjectHideFlags: 0
@@ -9692,7 +9692,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973195983383373140}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.1, z: -0}
+  m_LocalPosition: {x: 0, y: 1.4399999, z: 0}
   m_LocalScale: {x: 2.8986945, y: 2.8986945, z: 2.8986945}
   m_Children: []
   m_Father: {fileID: 1973195983223046328}
@@ -14496,7 +14496,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973195983740903707}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.34, z: 0}
   m_LocalScale: {x: 2.8079963, y: 2.8079963, z: 2.8079963}
   m_Children: []
   m_Father: {fileID: 1973195983223046328}
@@ -19283,7 +19283,43 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1417155903401845110, guid: 32977c33812693944a5367a42c878edb, type: 3}
       propertyPath: playOnAwake
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417155903401845110, guid: 32977c33812693944a5367a42c878edb, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417155903401845110, guid: 32977c33812693944a5367a42c878edb, type: 3}
+      propertyPath: NoiseModule.strength.scalar
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417155903401845110, guid: 32977c33812693944a5367a42c878edb, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417155903401845110, guid: 32977c33812693944a5367a42c878edb, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417155903401845110, guid: 32977c33812693944a5367a42c878edb, type: 3}
+      propertyPath: TrailModule.widthOverTrail.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417155903401845110, guid: 32977c33812693944a5367a42c878edb, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417155903401845110, guid: 32977c33812693944a5367a42c878edb, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417155903401845110, guid: 32977c33812693944a5367a42c878edb, type: 3}
+      propertyPath: TrailModule.widthOverTrail.minScalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417155903401845110, guid: 32977c33812693944a5367a42c878edb, type: 3}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3451588294678588095, guid: 32977c33812693944a5367a42c878edb, type: 3}
       propertyPath: m_RootOrder
@@ -19307,7 +19343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3451588294678588095, guid: 32977c33812693944a5367a42c878edb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3451588294678588095, guid: 32977c33812693944a5367a42c878edb, type: 3}
       propertyPath: m_LocalPosition.z

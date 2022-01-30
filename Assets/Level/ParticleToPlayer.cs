@@ -34,6 +34,7 @@ public class ParticleToPlayer : MonoBehaviour
 
         if (isActive)
         {
+            trail.GetComponent<ParticleSystem>().Play();
             trail.transform.DOMove(player.transform.position+offSet, speed);
         }
     }
