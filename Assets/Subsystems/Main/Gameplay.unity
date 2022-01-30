@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.67570966, g: 0.11755642, b: 0.35090092, a: 1}
+  m_IndirectSpecularColor: {r: 0.5423523, g: 0.2907409, b: 0.5666254, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -954,4 +954,86 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1713508791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1713508795}
+  - component: {fileID: 1713508794}
+  - component: {fileID: 1713508793}
+  - component: {fileID: 1713508792}
+  m_Layer: 0
+  m_Name: Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1713508792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713508791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54f92f965dbe44449b252b814ddc7137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioCue: {fileID: 11400000, guid: a38a300c7ba11364fbbad9b0e21e9632, type: 2}
+  _playOnStart: 0
+  setParentManually: 0
+  _audioCueEventChannel: {fileID: 11400000, guid: fc073a7a2143b11409957ff0f29a0620, type: 2}
+  _audioConfiguration: {fileID: 11400000, guid: 5129f39f9a6fbea4a8301ce059996e5c, type: 2}
+--- !u!114 &1713508793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713508791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54f92f965dbe44449b252b814ddc7137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioCue: {fileID: 11400000, guid: 4d7f52715ca4a7240a624bba4cbfd909, type: 2}
+  _playOnStart: 0
+  setParentManually: 0
+  _audioCueEventChannel: {fileID: 11400000, guid: fc073a7a2143b11409957ff0f29a0620, type: 2}
+  _audioConfiguration: {fileID: 11400000, guid: 5129f39f9a6fbea4a8301ce059996e5c, type: 2}
+--- !u!114 &1713508794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713508791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a492d00d8c2bda49a40f97feaa7e15a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onMutantChanged: {fileID: 11400000, guid: 3d24be11baabdd34980fce9d80da6007, type: 2}
+  mutantMusic: {fileID: 0}
+  normalMusic: {fileID: 0}
+--- !u!4 &1713508795
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713508791}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
