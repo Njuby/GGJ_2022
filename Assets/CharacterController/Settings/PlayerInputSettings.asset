@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   run: 304
   jump: 32
-  dash: 113
-  crouch: 308
+  dash: 308
+  crouch: 0
   aim: 324
   shoot: 323
   toggleMouse: 306

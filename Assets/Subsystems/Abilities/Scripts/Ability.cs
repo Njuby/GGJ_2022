@@ -12,9 +12,12 @@ public class Ability : MonoBehaviour
     public virtual void Update()
     {
         timer += Time.deltaTime;
-        if(Input.GetKeyDown(code))
+        if (timer > cooldownTime)
         {
-            DoAbility();
+            if (Input.GetKeyDown(code))
+            {
+                DoAbility();
+            }
         }
     }
 

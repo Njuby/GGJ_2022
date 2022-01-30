@@ -101,6 +101,14 @@ PrefabInstance:
       value: 63.41
       objectReference: {fileID: 0}
     - target: {fileID: 8716210927691116867, guid: 8dd0ec242eaae5c45a938635441def51, type: 3}
+      propertyPath: spawnTime
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716210927691116867, guid: 8dd0ec242eaae5c45a938635441def51, type: 3}
+      propertyPath: spawnLimit
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716210927691116867, guid: 8dd0ec242eaae5c45a938635441def51, type: 3}
       propertyPath: enemy.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -181,6 +189,14 @@ PrefabInstance:
     - target: {fileID: 8716210927691116867, guid: 8dd0ec242eaae5c45a938635441def51, type: 3}
       propertyPath: radius
       value: 77.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716210927691116867, guid: 8dd0ec242eaae5c45a938635441def51, type: 3}
+      propertyPath: spawnTime
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716210927691116867, guid: 8dd0ec242eaae5c45a938635441def51, type: 3}
+      propertyPath: spawnLimit
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8716210927691116867, guid: 8dd0ec242eaae5c45a938635441def51, type: 3}
       propertyPath: enemy.Array.size
@@ -269,6 +285,14 @@ PrefabInstance:
       value: 77.8
       objectReference: {fileID: 0}
     - target: {fileID: 8716210927691116867, guid: 8dd0ec242eaae5c45a938635441def51, type: 3}
+      propertyPath: spawnTime
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716210927691116867, guid: 8dd0ec242eaae5c45a938635441def51, type: 3}
+      propertyPath: spawnLimit
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716210927691116867, guid: 8dd0ec242eaae5c45a938635441def51, type: 3}
       propertyPath: enemy.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -349,6 +373,14 @@ PrefabInstance:
     - target: {fileID: 8716210927691116867, guid: 8dd0ec242eaae5c45a938635441def51, type: 3}
       propertyPath: radius
       value: 75.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716210927691116867, guid: 8dd0ec242eaae5c45a938635441def51, type: 3}
+      propertyPath: spawnTime
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716210927691116867, guid: 8dd0ec242eaae5c45a938635441def51, type: 3}
+      propertyPath: spawnLimit
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8716210927691116867, guid: 8dd0ec242eaae5c45a938635441def51, type: 3}
       propertyPath: enemy.Array.size
@@ -433,6 +465,14 @@ PrefabInstance:
       value: 77.8
       objectReference: {fileID: 0}
     - target: {fileID: 8716210927691116867, guid: 8dd0ec242eaae5c45a938635441def51, type: 3}
+      propertyPath: spawnTime
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716210927691116867, guid: 8dd0ec242eaae5c45a938635441def51, type: 3}
+      propertyPath: spawnLimit
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716210927691116867, guid: 8dd0ec242eaae5c45a938635441def51, type: 3}
       propertyPath: enemy.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -513,6 +553,14 @@ PrefabInstance:
     - target: {fileID: 8716210927691116867, guid: 8dd0ec242eaae5c45a938635441def51, type: 3}
       propertyPath: radius
       value: 45.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716210927691116867, guid: 8dd0ec242eaae5c45a938635441def51, type: 3}
+      propertyPath: spawnTime
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716210927691116867, guid: 8dd0ec242eaae5c45a938635441def51, type: 3}
+      propertyPath: spawnLimit
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8716210927691116867, guid: 8dd0ec242eaae5c45a938635441def51, type: 3}
       propertyPath: enemy.Array.size
@@ -599,6 +647,14 @@ PrefabInstance:
     - target: {fileID: 8716210927691116867, guid: 8dd0ec242eaae5c45a938635441def51, type: 3}
       propertyPath: radius
       value: 75.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716210927691116867, guid: 8dd0ec242eaae5c45a938635441def51, type: 3}
+      propertyPath: spawnTime
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716210927691116867, guid: 8dd0ec242eaae5c45a938635441def51, type: 3}
+      propertyPath: spawnLimit
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8716210927691116867, guid: 8dd0ec242eaae5c45a938635441def51, type: 3}
       propertyPath: enemy.Array.size

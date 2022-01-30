@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
+    public float RaycastLength = 1.6f;
+    public float rayWidth = 0.25f;
     public float floorOffsetY;
     public float rotateSpeed = 10f;
     public float slopeLimit = 45f;
@@ -107,11 +109,11 @@ public class CharacterMovement : MonoBehaviour
     private Vector3 FindFloor()
     {
         // width of raycasts around the centre of your character
-        float raycastWidth = 0.25f;
+        float raycastWidth = rayWidth;
         // check floor on 5 raycasts   , get the average when not Vector3.zero
         int floorAverage = 1;
 
-        CombinedRaycast = FloorRaycasts(0, 0, 1.6f);
+        CombinedRaycast = FloorRaycasts(0, 0, RaycastLength, Color.magenta);
         floorAverage += (getFloorAverage(raycastWidth, 0) + getFloorAverage(-raycastWidth, 0) + getFloorAverage(0, raycastWidth) + getFloorAverage(0, -raycastWidth));
 
         return CombinedRaycast / floorAverage;
@@ -120,9 +122,9 @@ public class CharacterMovement : MonoBehaviour
     // only add to average floor position if its not Vector3.zero
     private int getFloorAverage(float offsetx, float offsetz)
     {
-        if (FloorRaycasts(offsetx, offsetz, 1.6f) != Vector3.zero)
+        if (FloorRaycasts(offsetx, offsetz, 1.6f, Color.magenta) != Vector3.zero)
         {
-            CombinedRaycast += FloorRaycasts(offsetx, offsetz, 1.6f);
+            CombinedRaycast += FloorRaycasts(offsetx, offsetz, 1.6f, Color.magenta);
             return 1;
         }
         else { return 0; }
@@ -130,7 +132,7 @@ public class CharacterMovement : MonoBehaviour
 
     public bool IsGrounded()
     {
-        if (FloorRaycasts(0, 0, 0.6f) != Vector3.zero)
+        if (FloorRaycasts(0, 0, 0.6f, Color.blue) != Vector3.zero)
         {
             slopeAmount = Vector3.Dot(transform.forward, floorNormal);
             return true;
@@ -141,13 +143,13 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    private Vector3 FloorRaycasts(float offsetx, float offsetz, float raycastLength)
+    private Vector3 FloorRaycasts(float offsetx, float offsetz, float raycastLength, Color color)
     {
         RaycastHit hit;
         // move raycast
         raycastFloorPos = transform.TransformPoint(0 + offsetx, 0 + 0.5f, 0 + offsetz);
 
-        Debug.DrawRay(raycastFloorPos, Vector3.down, Color.magenta);
+        Debug.DrawRay(raycastFloorPos, Vector3.down, color);
         if (Physics.Raycast(raycastFloorPos, -Vector3.up, out hit, raycastLength))
         {
             floorNormal = hit.normal;
@@ -168,13 +170,23 @@ public class CharacterMovement : MonoBehaviour
         return currentMovespeed;
     }
 
-    public void Jump()
+    public void Jump(bool setAnim = true)
     {
         if (IsGrounded())
         {
             gravity.y = jumpPower;
             if (anim != null)
-                anim.SetBool("isJumping", true);
+            {
+                if (setAnim)
+                {
+                    anim.SetBool("isJumping", true);
+                }
+                else
+                {
+                    Debug.Log("Caled");
+                    anim.SetBool("isAttacking", true);
+                }
+            }
         }
     }
 }

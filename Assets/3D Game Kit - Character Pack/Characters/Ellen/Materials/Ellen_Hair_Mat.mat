@@ -136,7 +136,7 @@ Material:
     - _numSteps: 4
     - _value: 0
     m_Colors:
-    - _BaseColor: {r: 0.44546673, g: 0.25111246, b: 0.5377358, a: 1}
+    - _BaseColor: {r: 0.509434, g: 0.26314518, b: 0.0744927, a: 1}
     - _Color: {r: 0.5529412, g: 0.13333334, b: 0.13333334, a: 1}
     - _Color2: {r: 1, g: 0.45588237, b: 0.45588237, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

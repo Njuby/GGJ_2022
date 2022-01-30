@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 749fb139b323ee3419a618ce9495ae2b, type: 3}
+  m_Name: MutantMats
+  m_EditorClassIdentifier: 
+  hairMat: {fileID: 2100000, guid: dee6763feb0dcd640bcc6cc0e771c7c2, type: 2}
+  bodyMat: {fileID: 2100000, guid: c81c87df9d2e2624883019da259bf4dd, type: 2}
+  headMat: {fileID: 2100000, guid: 65eb6dfacfc20cb47b6637acab5aae06, type: 2}
+  eyesMat: {fileID: 2100000, guid: 339d25de145b4f84eaac5a3a7c7377e3, type: 2}
+  tearMat: {fileID: 2100000, guid: 31f444b6fa85c14439bd9d7704a1f86b, type: 2}
+  pistolMat: {fileID: 2100000, guid: 2ba65120a06e3c448906de46fe02cee3, type: 2}

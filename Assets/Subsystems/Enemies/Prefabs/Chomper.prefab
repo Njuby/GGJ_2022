@@ -3098,7 +3098,7 @@ Transform:
   m_GameObject: {fileID: 6778092439775218653}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.5432835, y: 0, z: -7.5774984}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 6778092439775713279}
   - {fileID: 6778092439775713269}
@@ -3140,8 +3140,8 @@ MonoBehaviour:
   health: 100
   target: {fileID: 0}
   wanderTarget: {x: 0, y: 0, z: 0}
-  detectionRange: 10
-  closeToPlayerRange: 2
+  detectionRange: 50
+  closeToPlayerRange: 5
   attackTimer: 5
   attackCooldown: 5
   attack: {fileID: 11400000, guid: 0a354ea1134aafb409de05cfadc9a98e, type: 2}
@@ -3161,7 +3161,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.2
-  m_Speed: 2
+  m_Speed: 10
   m_Acceleration: 30
   avoidancePriority: 50
   m_AngularSpeed: 2000

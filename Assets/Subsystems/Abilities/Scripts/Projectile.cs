@@ -18,7 +18,7 @@ public class Projectile : MonoBehaviour, IPoolObject
     public LayerMask mask;
 
     [Header("Damaging factor")]
-    public int damage;
+    public int baseDamage;
 
     public float DespawnTime;
     public float DieOutTime;
@@ -29,6 +29,8 @@ public class Projectile : MonoBehaviour, IPoolObject
     public ObjectInstance ObjInstance { get; set; }
 
     public bool stopped;
+
+    public int strength;
 
     public void OnGetObject(ObjectInstance objectInstance, int poolKey)
     {
@@ -52,21 +54,21 @@ public class Projectile : MonoBehaviour, IPoolObject
         if (stopped) return;
 
         time += Time.deltaTime;
-        if (time > DieOutTime)
+        if (time > DieOutTime * strength)
         {
             PoolManager.Instance.ReturnToPool(gameObject);
             return;
         }
 
-        transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y + twist * Time.deltaTime, 0);
+        transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y + (twist) * Time.deltaTime, 0);
 
         if (GoTowards != Vector3.zero)
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(GoTowards - transform.position, Vector3.up), TowardsStrength);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(GoTowards - transform.position, Vector3.up), TowardsStrength * strength);
 
-        transform.position += transform.forward * velocity * Time.deltaTime;
-        transform.position += Vector3.down * gravity * Time.deltaTime;
+        transform.position += transform.forward * (velocity * strength) * Time.deltaTime;
+        transform.position += Vector3.down * (gravity / strength) * Time.deltaTime;
 
-        var collider = Physics.OverlapSphere(transform.position, autoLockToDistance, mask);
+        var collider = Physics.OverlapSphere(transform.position, autoLockToDistance * strength, mask);
         collider.OrderBy((x) => Vector3.Distance(x.transform.position, transform.position));
 
         if (collider.Length != 0)
@@ -79,7 +81,7 @@ public class Projectile : MonoBehaviour, IPoolObject
         if (stopped) return;
 
         if (collision.transform.CompareTag("Player")) return;
-        collision.gameObject.Hit(damage);
+        collision.gameObject.Hit(baseDamage * strength);
         transform.SetParent(collision.transform);
         if (gameObject.activeInHierarchy) StartCoroutine(WaitForDespawn());
         else PoolManager.Instance.ReturnToPool(gameObject);
@@ -88,7 +90,7 @@ public class Projectile : MonoBehaviour, IPoolObject
 
     public IEnumerator WaitForDespawn()
     {
-        yield return new WaitForSeconds(DespawnTime);
+        yield return new WaitForSeconds(DespawnTime * strength);
         if (!gameObject.activeInHierarchy)
         {
             PoolManager.Instance.ReturnToPool(gameObject);
