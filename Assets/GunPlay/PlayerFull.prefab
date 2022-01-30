@@ -666,7 +666,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 10fc4df2da32a41aaa32d77bc913491c, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 580d34519b760b249aca5172d89c1a0b, type: 2}
 --- !u!114 &3862113733472166211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -920,6 +920,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3100034207740227919, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+      propertyPath: MutantSwitch
+      value: 
+      objectReference: {fileID: 11400000, guid: 1784321b5eb15a540a3f0d6607171917, type: 2}
+    - target: {fileID: 3100034207740227919, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
       propertyPath: timeTillHeal
       value: 5
       objectReference: {fileID: 0}
@@ -1040,6 +1044,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8145155001757498683, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
+      propertyPath: useAbilityEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 640304bec6e80634f9299bf2392f7db9, type: 2}
+    - target: {fileID: 8145155001757498683, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
       propertyPath: mutantChangeEvent
       value: 
       objectReference: {fileID: 11400000, guid: 1784321b5eb15a540a3f0d6607171917, type: 2}
@@ -1158,6 +1166,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4664273571639667290, guid: 5de8a9217404abf47b2d06d077076d74, type: 3}
   m_PrefabInstance: {fileID: 3862113732302879582}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &655048680
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760269360479369937}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 9.59, z: 1}
+  m_Center: {x: 0, y: 4.6, z: 0}
 --- !u!114 &1384832855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1172,16 +1193,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MutantLevelChange: {fileID: 11400000, guid: 67fcef5428949644da7d4d3371547be4, type: 2}
   MutantDamageTaken: {fileID: 11400000, guid: 90e7c2ba51e2afc448c8a40982fd1da5, type: 2}
-  TimeValue: 5
-  baseDecreaseStrengthBy: 10
-  DecreaseStrengthBy: 10
+  useAbilityEvent: {fileID: 11400000, guid: 640304bec6e80634f9299bf2392f7db9, type: 2}
+  TimeValue: 10
+  baseDecreaseStrengthBy: 1
+  DecreaseStrengthBy: 1
   mutationStrengthBar: {fileID: 1384832857}
   maxMutantStrength: 50
   CurrentMutantStrength: 0
   mutantLevel: 4
   isMutantMode: 0
   increaseOnCOllect: 3
-  damageTimer: 3
+  damageTimer: 1
 --- !u!114 &1384832857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1232,19 +1254,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnDash: {fileID: 11400000, guid: 8bc128b8f82f68849a853d6330413f58, type: 2}
   dashVFX: {fileID: 1490204482}
---- !u!65 &655048680
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1760269360479369937}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 9.59, z: 1}
-  m_Center: {x: 0, y: 4.6, z: 0}
 --- !u!114 &460963687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1264,6 +1273,7 @@ MonoBehaviour:
   anim: {fileID: 6723290683511809425}
   mutantStrengthEvent: {fileID: 11400000, guid: 67fcef5428949644da7d4d3371547be4, type: 2}
   mutantChangeEvent: {fileID: 11400000, guid: 1784321b5eb15a540a3f0d6607171917, type: 2}
+  useAbilityEvent: {fileID: 11400000, guid: 640304bec6e80634f9299bf2392f7db9, type: 2}
   preview: {fileID: 8440361307756105988}
   effect: {fileID: 4649895555257338410}
   spikeCluster: {fileID: 3566968046411811929, guid: 06e5ba550a9abd94aa6eeee812b62f03, type: 3}
