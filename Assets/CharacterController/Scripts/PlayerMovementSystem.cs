@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using UnityAtoms.BaseAtoms;
 
 public class PlayerMovementSystem : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class PlayerMovementSystem : MonoBehaviour
     [SerializeField, BoxGroup("Debug"), EnumToggleButtons()] private PlayerInputSystem.ManeuverType maneuverType;
     [SerializeField, BoxGroup("Debug")] private float dashTime;
     [SerializeField, BoxGroup("Debug")] private bool dashEnabled;
+    [SerializeField] private BoolVariable mutantActivated;
+    [SerializeField] private VoidEvent OnDash;
 
     #endregion Private Fields
 
@@ -42,7 +45,7 @@ public class PlayerMovementSystem : MonoBehaviour
     private void FixedUpdate()
     {
         characterMovement.MoveUpdate(GetMoveSpeed());
-        if (maneuverType.HasFlag(PlayerInputSystem.ManeuverType.Dash))
+        if (maneuverType.HasFlag(PlayerInputSystem.ManeuverType.Dash) && mutantActivated.Value)
         {
             Dash();
         }
@@ -78,7 +81,7 @@ public class PlayerMovementSystem : MonoBehaviour
     {
         if (dashEnabled) return;
         dashEnabled = true;
-
+        OnDash.Raise();
         dashTime = dashDuration;
 
         //Vector3 forward = playerController.transform.forward;
