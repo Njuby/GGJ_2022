@@ -28,7 +28,7 @@ public class SpikeAbility : Ability
         {
             GameObject obj = PoolManager.Instance.GetFromPool(spike, transform.position + Vector3.up, Quaternion.Euler(0, 360f / (spikeAmount * mutantcy) * i, 0));
             obj.GetComponentInChildren<MeshRenderer>().material.SetColor("_EmissionColor", Color.Lerp(color1, color2, Random.value));
-            spike.GetComponent<Projectile>().strength = mutantcy;
+            spike.GetComponent<Projectile>().strength = mutantcy / 5;
         }
     }
 }

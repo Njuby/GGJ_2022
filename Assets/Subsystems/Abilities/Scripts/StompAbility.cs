@@ -37,7 +37,7 @@ public class StompAbility : Ability
         preview.SetActive(false);
         effect.SetActive(false);
 
-        mutantStrengthEvent.Register((x) => mutantcy = x);
+        mutantStrengthEvent.Register((x) => mutantcy = x / 5);
     }
 
     public override void Update()
